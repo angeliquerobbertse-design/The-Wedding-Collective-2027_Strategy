@@ -1,0 +1,2022 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body style="margin:0">
+<title>The Wedding Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F3F1EC; --paper-3:#ECEAE4;
+  --hair:#E2E4E7; --silver:#C3C8CF; --silver-2:#9CA2AB; --mute:#737A85;
+  --ink:#1B2130; --ink-2:#464D5B;
+  --navy:#14284F; --navy-2:#0D1B38; --navy-soft:#E8ECF3;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(16px,5vw,72px);
+  --rail:0px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--navy);color:#fff}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:1.5px solid var(--navy);outline-offset:3px}
+
+/* ---------- type ---------- */
+.eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.eyebrow b{color:var(--accent);font-weight:600}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(38px,5.6vw,78px);line-height:1.02}
+h2 em,h1 em,h3 em{font-style:italic;color:var(--accent)}
+h3{font-size:clamp(24px,2.4vw,32px);line-height:1.15}
+p{margin:0}
+.lede{font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:var(--ink-2);max-width:62ch}
+.small{font-size:13.5px;color:var(--mute);line-height:1.5}
+.num{font-family:var(--display);font-variant-numeric:lining-nums tabular-nums}
+.navy{color:var(--accent)}
+.rule{height:1px;background:var(--hair);border:0;margin:0}
+
+/* ---------- frame ---------- */
+main{padding-left:var(--rail)}
+.sec{position:relative;overflow:hidden;padding-block:clamp(72px,11vw,150px);padding-inline:var(--gut);border-top:1px solid var(--hair)}
+.sec.tight{padding-block:clamp(56px,8vw,110px)}
+.inner{max-width:1180px;margin:0 auto;position:relative}
+.head{display:grid;gap:22px;margin-bottom:clamp(40px,5vw,72px)}
+.head .eyebrow{display:flex;gap:14px;align-items:center}
+.head .eyebrow::after{content:"";height:1px;width:56px;background:var(--silver)}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+
+/* botanical watermark */
+.sprig{position:absolute;color:var(--silver);pointer-events:none;opacity:.55;z-index:0}
+.sec > .inner{z-index:1}
+
+/* ---------- chapter nav ---------- */
+.rail{position:fixed;left:0;top:0;bottom:0;width:208px;padding:34px 0 30px 30px;display:none;flex-direction:column;justify-content:space-between;z-index:40;background:linear-gradient(90deg,var(--paper) 78%,rgba(251,250,247,0))}
+.rail .mark{display:flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:600;text-decoration:none}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rail a.ch{display:grid;grid-template-columns:22px 1fr;gap:6px;text-decoration:none;color:var(--silver-2);font-size:12px;line-height:1.35;padding:5px 0;transition:color .25s}
+.rail a.ch span:first-child{font-family:var(--display);font-style:italic;font-size:13px}
+.rail a.ch:hover{color:var(--ink)}
+.rail a.ch.on{color:var(--accent)}
+.rail a.ch.on span:last-child{font-weight:600}
+.rail .rfoot{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-2)}
+@media (min-width:1200px){:root{--rail:208px}.rail{display:flex}}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:45;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:rgba(251,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair);transform:translateY(-110%);transition:transform .35s}
+.topbar.show{transform:none}
+.topbar .t{font-family:var(--display);font-size:16px}
+.topbar button{border:1px solid var(--silver);background:transparent;padding:6px 14px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+@media (min-width:1200px){.topbar{display:none}}
+.sheet{position:fixed;inset:0;z-index:60;background:var(--paper);padding:calc(70px + env(safe-area-inset-top,0px)) 24px 30px;overflow:auto}
+.sheet a{display:block;font-family:var(--display);font-size:26px;text-decoration:none;color:var(--ink);padding:8px 0;border-bottom:1px solid var(--hair)}
+.sheet a i{color:var(--silver-2);font-size:16px;margin-right:10px}
+.sheet .x{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));right:16px;border:1px solid var(--silver);background:none;border-radius:999px;padding:6px 14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+
+/* growth stem (scroll progress) */
+.stem{position:fixed;right:clamp(10px,2vw,28px);top:12vh;height:76vh;width:28px;z-index:30;pointer-events:none;display:none}
+@media (min-width:900px){.stem{display:block}}
+.stem path{fill:none;stroke-linecap:round}
+
+/* reveal */
+.await{opacity:0;transform:translateY(18px)}
+.rv{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- COVER ---------- */
+.cover{border-top:0;padding-top:clamp(90px,12vw,150px);padding-bottom:clamp(60px,8vw,110px);overflow:hidden}
+.cover .meta{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;border-bottom:1px solid var(--hair);padding-bottom:18px;margin-bottom:clamp(48px,8vw,110px)}
+.cover h1{font-size:clamp(58px,11.5vw,176px);line-height:.86;letter-spacing:-.025em;font-weight:400}
+.cover h1 .the{display:block;font-size:.3em;font-style:italic;letter-spacing:0;color:var(--accent);margin-bottom:.35em;padding-left:.2em}
+.cover h1 .l2{display:block;padding-left:clamp(0px,8vw,150px)}
+.cover .under{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);margin-top:clamp(40px,6vw,80px);align-items:end}
+@media (max-width:800px){.cover .under{grid-template-columns:1fr}}
+.cover .prop{font-family:var(--display);font-size:clamp(21px,2.1vw,29px);line-height:1.3}
+.cover .flow{display:flex;flex-wrap:wrap;gap:8px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink-2)}
+.cover .flow span{display:inline-flex;align-items:center}
+.cover .flow span+span::before{content:"";width:26px;height:1px;background:var(--silver);margin:0 12px}
+.cover .flow span:first-child{color:var(--accent)}
+.rings{display:inline-block;vertical-align:middle}
+
+/* ---------- proposition ---------- */
+.not{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-top:clamp(40px,5vw,64px)}
+.not > div{padding:26px 26px 26px 0}
+.not > div + div{padding-left:26px;border-left:1px solid var(--hair)}
+.not .s{font-family:var(--display);font-size:clamp(20px,2vw,26px);color:var(--silver-2);text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:var(--silver-2)}
+@media (max-width:640px){.not{grid-template-columns:1fr}.not > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+.is{margin-top:0;padding:clamp(28px,4vw,44px) 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px;align-items:center}
+@media (max-width:800px){.is{grid-template-columns:1fr}}
+.is h3{font-size:clamp(28px,3.2vw,44px)}
+.stack{display:flex;flex-wrap:wrap;gap:0;font-size:14px;color:var(--ink-2)}
+.stack span{padding:6px 14px 6px 0;margin-right:14px;border-right:1px solid var(--hair);line-height:1.2;margin-bottom:8px}
+.stack span:last-child{border-right:0}
+.equation{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(16px,3vw,40px);margin-top:clamp(44px,6vw,80px);align-items:stretch}
+.equation .side h4{margin:0 0 10px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.equation .side p{font-family:var(--display);font-size:clamp(19px,1.8vw,24px);line-height:1.35}
+.equation .plus{font-family:var(--display);font-size:52px;color:var(--silver);align-self:center;font-weight:300}
+@media (max-width:700px){.equation{grid-template-columns:1fr}.equation .plus{font-size:36px}}
+
+/* ---------- regional model / map ---------- */
+.masthead{display:grid;gap:0;margin-top:8px}
+.ed{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;padding:16px 0;border-bottom:1px solid var(--hair);cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;text-align:left;width:100%}
+.ed .n{font-family:var(--display);font-size:clamp(20px,2vw,26px);color:var(--silver-2);transition:color .3s}
+.ed .n i{font-style:italic}
+.ed .st{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--silver-2);font-weight:600}
+.ed .tw{display:block;margin-bottom:4px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver-2)}
+.ed.on .n,.ed:hover .n{color:var(--ink)}
+.ed.on .st{color:var(--accent)}
+.ed.pilot .n{color:var(--accent)}
+
+.mapwrap{position:relative}
+.mapwrap svg{width:100%;height:auto;display:block;overflow:visible}
+.mapnote{margin-top:14px}
+.edpanel{margin-top:22px;min-height:120px;border-top:1px solid var(--ink);padding-top:18px}
+.edpanel h4{margin:0 0 6px;font-family:var(--display);font-weight:400;font-size:24px}
+.story-flow{display:flex;flex-wrap:wrap;gap:8px 0;margin-top:clamp(40px,5vw,64px);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.story-flow span{display:inline-flex;align-items:center;color:var(--ink-2)}
+.story-flow span+span::before{content:"→";color:var(--silver-2);margin:0 14px;font-weight:400}
+.story-flow span:last-child{color:var(--accent)}
+
+/* ---------- market ---------- */
+.verbs{font-family:var(--display);font-size:clamp(34px,4.6vw,64px);line-height:1.02;display:grid}
+.verbs span{color:var(--silver);transition:color .5s}
+.verbs span.lit{color:var(--ink)}
+.verbs span.lit:last-child{color:var(--accent);font-style:italic}
+.supply{position:relative;min-height:420px;border-left:1px solid var(--hair);padding-left:clamp(20px,3vw,40px)}
+.cloud{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px;margin-top:18px}
+.cloud span{font-family:var(--display);line-height:1.1;color:var(--ink-2);cursor:default;transition:color .2s}
+.cloud span:hover{color:var(--accent)}
+.cloud .s1{font-size:34px}.cloud .s2{font-size:26px}.cloud .s3{font-size:20px}.cloud .s4{font-size:16px;font-family:var(--sans);color:var(--mute)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--ink)}
+.facts > div{padding:22px 22px 0 0}
+.facts > div + div{padding-left:22px;border-left:1px solid var(--hair)}
+.facts .big{font-family:var(--display);font-size:clamp(36px,4vw,56px);line-height:1;color:var(--accent)}
+.facts .big small{font-size:.45em;color:var(--ink-2)}
+.facts p{margin-top:10px;font-size:14px;color:var(--ink-2);line-height:1.45}
+.facts sup a{font-size:10px;text-decoration:none;color:var(--mute)}
+@media (max-width:900px){.facts{grid-template-columns:1fr 1fr}.facts > div:nth-child(3){padding-left:0;border-left:0}.facts > div{padding-bottom:22px}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}.facts > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+.callout{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+.callout .bar{width:1px;height:100%;background:var(--navy);min-height:60px}
+.callout p{font-family:var(--display);font-size:clamp(22px,2.4vw,34px);line-height:1.25}
+
+/* ---------- journey ---------- */
+.aud{font-family:var(--display);font-size:clamp(20px,2vw,27px);line-height:1.45;color:var(--ink-2)}
+.aud s{color:var(--silver-2);text-decoration-thickness:1px}
+.aud b{font-weight:400;color:var(--ink)}
+.journey{margin-top:clamp(48px,6vw,80px)}
+.jtrack{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));position:relative}
+.jtrack::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--silver)}
+.jstep{background:none;border:0;padding:0 6px 0 0;text-align:left;cursor:pointer;position:relative}
+.jstep .dot{width:13px;height:13px;border-radius:50%;border:1px solid var(--silver-2);background:var(--paper);display:block;margin:21px 0 16px;transition:all .3s}
+.jstep .lb{font-size:12px;letter-spacing:.2em;font-weight:600;color:var(--silver-2);transition:color .3s}
+.jstep.on .dot{background:var(--navy);border-color:var(--navy);transform:scale(1.25)}
+.jstep.on .lb,.jstep:hover .lb{color:var(--accent)}
+.jpanel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);margin-top:36px;padding-top:30px;border-top:1px solid var(--hair);min-height:190px}
+.jpanel h3{font-size:clamp(30px,3.4vw,46px)}
+.jpanel h3 em{font-size:.55em;display:block;color:var(--mute);font-style:italic;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:1px solid var(--silver);padding:6px 11px;border-radius:999px;color:var(--ink-2);background:transparent}
+.chip.n{border-color:var(--navy);color:var(--accent)}
+@media (max-width:760px){.jtrack{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:6px}.jtrack::before{display:none}.jpanel{grid-template-columns:1fr}}
+
+/* ---------- landscape ---------- */
+.ledger{border-top:1px solid var(--ink)}
+.lgrp{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:28px;border-bottom:1px solid var(--hair);padding:26px 0}
+@media (max-width:800px){.lgrp{grid-template-columns:1fr;gap:8px}}
+.lgrp > h4{margin:0;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.2}
+.lgrp > h4 small{display:block;font-family:var(--sans);font-size:12.5px;color:var(--mute);margin-top:6px;line-height:1.4}
+.player{border-top:1px solid var(--hair)}
+.player:first-child{border-top:0}
+.player > button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 20px;gap:18px;width:100%;padding:12px 0;cursor:pointer;align-items:baseline}
+.player > button:focus-visible{outline:1.5px solid var(--navy)}
+.player .pn{font-weight:600;font-size:15.5px}
+.player .pw{font-size:14.5px;color:var(--ink-2);line-height:1.45}
+.player .pp{font-family:var(--display);font-size:20px;color:var(--silver-2);transition:transform .3s;justify-self:end}
+.player.open .pp{transform:rotate(45deg);color:var(--accent)}
+.player .pd{display:none;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 20px;gap:18px;padding:0 0 16px}
+.player.open .pd{display:grid}
+.player .pd > div:first-child{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;padding-top:3px}
+.player .pd p{font-size:14px;color:var(--ink-2)}
+.player .pd a{font-size:12.5px}
+@media (max-width:640px){.player > button,.player .pd{grid-template-columns:1fr 20px}.player .pw{grid-column:1/2}.player .pd > div:first-child{display:none}}
+
+.strong{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--hair)}
+.strong > div{padding:22px 24px 22px 0;border-bottom:1px solid var(--hair)}
+.strong > div:nth-child(3n+2),.strong > div:nth-child(3n){padding-left:24px;border-left:1px solid var(--hair)}
+.strong h5{margin:0 0 6px;font-size:15px;font-weight:600}
+.strong p{font-size:14px;color:var(--ink-2)}
+@media (max-width:800px){.strong{grid-template-columns:1fr}.strong > div:nth-child(n){padding-left:0;border-left:0}}
+
+/* ---------- positioning map ---------- */
+.pmap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.pmap{grid-template-columns:1fr}}
+.pmap svg{width:100%;height:auto;display:block}
+.pmap .pt{cursor:pointer}
+.pmap .pt circle.d{transition:r .25s,fill .25s}
+.pmap .pt:hover circle.d,.pmap .pt.on circle.d{fill:var(--navy)}
+.pmap .pt text{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.pmap .pt.dim{opacity:.18}
+.pinfo{border-top:1px solid var(--ink);padding-top:18px}
+.pinfo h4{margin:0 0 4px;font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1}
+.pinfo .cat{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.pinfo p{margin-top:12px;font-size:15px;color:var(--ink-2)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{cursor:pointer}
+.filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* ---------- white space ---------- */
+.open4{counter-reset:o;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink)}
+.open4 > div{padding:28px 28px 28px 0;border-bottom:1px solid var(--hair)}
+.open4 > div:nth-child(even){padding-left:28px;border-left:1px solid var(--hair)}
+.open4 h4{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:clamp(22px,2vw,28px);line-height:1.2}
+.open4 p{font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){.open4{grid-template-columns:1fr}.open4 > div:nth-child(even){padding-left:0;border-left:0}}
+.versus{display:grid;grid-template-columns:1fr 1fr;margin-top:clamp(48px,6vw,80px);border:1px solid var(--hair)}
+.versus > div{padding:clamp(24px,3vw,40px)}
+.versus > div + div{background:var(--navy);color:#fff}
+.versus h4{margin:0 0 14px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.versus > div + div h4{color:#AEB9CF}
+.versus p{font-family:var(--display);font-size:clamp(21px,2vw,28px);line-height:1.3}
+@media (max-width:700px){.versus{grid-template-columns:1fr}}
+.verdict{margin-top:36px;font-family:var(--display);font-size:clamp(26px,3vw,40px);line-height:1.15;max-width:34ch}
+
+/* ---------- regional advantage ---------- */
+.adv{columns:2;column-gap:56px;margin-top:8px}
+.adv li{break-inside:avoid;padding:12px 0;border-bottom:1px solid var(--hair);font-size:16px;list-style:none}
+.adv{padding:0}
+@media (max-width:640px){.adv{columns:1}}
+.cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-bottom:clamp(40px,5vw,60px);border-top:1px solid var(--ink)}
+.cities > div{padding:20px 20px 20px 0}
+.cities > div + div{padding-left:20px;border-left:1px solid var(--hair)}
+.cities h4{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px)}
+.cities p{font-size:14px;color:var(--mute);margin-top:6px}
+@media (max-width:640px){.cities{grid-template-columns:1fr}.cities > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+.keypoint{margin-top:clamp(40px,5vw,64px);padding:clamp(26px,3vw,40px) 0;border-top:1px solid var(--navy);border-bottom:1px solid var(--navy)}
+.keypoint p{font-family:var(--display);font-size:clamp(26px,3.2vw,44px);line-height:1.15;color:var(--accent)}
+
+/* ---------- advantage index ---------- */
+.index{border-top:1px solid var(--ink)}
+.index > div{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:28px;padding:22px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.index h4{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,52px);line-height:1;letter-spacing:-.01em;transition:color .3s}
+.index > div:hover h4{color:var(--accent)}
+.index p{font-size:15.5px;color:var(--ink-2)}
+@media (max-width:640px){.index > div{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- ecosystem flower ---------- */
+.eco{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:center}
+@media (max-width:900px){.eco{grid-template-columns:1fr}}
+.eco svg{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}
+.petal{cursor:pointer}
+.petal path{fill:rgba(20,40,79,0);stroke:var(--silver-2);stroke-width:1;transition:fill .35s,stroke .35s}
+.petal:hover path{stroke:var(--navy)}
+.petal.on path{fill:rgba(20,40,79,.06);stroke:var(--navy);stroke-width:1.3}
+.petal text{font-family:var(--sans);font-size:12px;letter-spacing:.18em;font-weight:600;fill:var(--ink-2);text-transform:uppercase}
+.petal.on text{fill:var(--navy)}
+.ecop{border-top:1px solid var(--ink);padding-top:20px}
+.ecop h3{font-size:clamp(30px,3vw,42px)}
+.ecop ul{list-style:none;padding:0;margin:18px 0 0}
+.ecop li{padding:10px 0;border-bottom:1px solid var(--hair);font-size:16px}
+.ecop .role{margin-top:16px;font-size:14px;color:var(--mute)}
+
+/* ---------- directory ---------- */
+.dir{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:clamp(24px,5vw,72px);align-items:start}
+@media (max-width:900px){.dir{grid-template-columns:1fr}}
+.dsteps{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.dsteps button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:15px 0;border-bottom:1px solid var(--hair);cursor:pointer}
+.dsteps button:focus-visible{outline:1.5px solid var(--navy)}
+.dsteps .k{font-family:var(--display);font-style:italic;color:var(--silver-2)}
+.dsteps .t{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--silver-2)}
+.dsteps .t small{display:block;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--mute);margin-top:4px;max-height:0;overflow:hidden;transition:max-height .4s}
+.dsteps .on .t,.dsteps .on .k{color:var(--accent)}
+.dsteps .on .t small{max-height:80px}
+.mock{background:#fff;border:1px solid var(--hair);box-shadow:0 30px 60px -40px rgba(13,27,56,.35);font-size:14px}
+.mock .bar{display:flex;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--hair);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.mock .bar b{font-family:var(--display);font-weight:400;letter-spacing:0;text-transform:none;font-size:15px;color:var(--ink)}
+.mock .crumbs{padding:12px 18px;font-size:12px;color:var(--mute);border-bottom:1px solid var(--hair)}
+.mock .res{padding:6px 18px 18px}
+.row{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--hair);transition:all .5s}
+.row .th{width:52px;height:52px;background:var(--paper-3)}
+.row .nm{font-weight:600}
+.row .ar{font-size:12px;color:var(--mute)}
+.row .tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid var(--navy);padding:3px 7px;font-weight:600}
+.row.ghost{opacity:.45}
+.row.me{background:transparent}
+.row.me.hl{background:var(--navy-soft);margin:0 -10px;padding:12px 10px}
+.prof{padding:18px;border-top:1px solid var(--hair);display:none}
+.prof.show{display:block}
+.prof .gal{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;height:110px}
+.prof .gal div{background:linear-gradient(135deg,var(--paper-3),var(--paper-2))}
+.prof .gal div:first-child{background:linear-gradient(160deg,#DDE2EA,#F1EEE8)}
+.prof p{margin-top:12px;font-size:13.5px;color:var(--ink-2)}
+.prof .acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.prof .btn{background:var(--navy);color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px;font-weight:600}
+.feat{display:none;font-size:12px;color:var(--accent);border-left:1px solid var(--navy);padding-left:10px}
+.feat.show{display:block}
+.mockcap{margin-top:12px}
+.authority{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.authority > div{padding:22px 22px 0 0}
+.authority > div + div{padding-left:22px;border-left:1px solid var(--hair)}
+.authority h5{margin:0 0 6px;font-family:var(--display);font-weight:400;font-size:22px}
+.authority p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:760px){.authority{grid-template-columns:1fr}.authority > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair);padding-top:18px}}
+
+/* ---------- publishing model ---------- */
+.lanes{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch}
+.lane{padding:clamp(22px,3vw,36px);border:1px solid var(--hair);background:var(--paper)}
+.lane.c{background:var(--paper-2)}
+.lane h4{margin:0 0 4px;font-family:var(--display);font-weight:400;font-size:28px}
+.lane .who{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--accent)}
+.lane ul{list-style:none;padding:0;margin:16px 0 0}
+.lane li{padding:9px 0;border-top:1px solid var(--hair);font-size:15px}
+.wall{display:flex;align-items:center;justify-content:center;position:relative}
+.wall::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--navy)}
+.wall span{position:relative;background:var(--paper);writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:12px 0}
+.base{grid-column:1/-1;margin-top:0;border:1px solid var(--hair);border-top:0;padding:18px clamp(22px,3vw,36px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;background:var(--navy);color:#fff}
+.base b{font-family:var(--display);font-weight:400;font-size:22px}
+.base span{font-size:13px;color:#C9D1E0}
+@media (max-width:760px){.lanes{grid-template-columns:1fr}.wall{height:56px}.wall::before{left:0;right:0;top:50%;bottom:auto;border-left:0;border-top:1px dashed var(--navy)}.wall span{writing-mode:horizontal-tb;transform:none;padding:0 12px}}
+.rules{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.rules > div{padding:18px 18px 0 0}
+.rules > div + div{padding-left:18px;border-left:1px solid var(--hair)}
+.rules h5{margin:0 0 6px;font-size:14.5px;font-weight:600}
+.rules p{font-size:14px;color:var(--ink-2)}
+@media (max-width:860px){.rules{grid-template-columns:1fr 1fr}.rules > div:nth-child(3){padding-left:0;border-left:0}.rules > div{padding-bottom:18px}}
+@media (max-width:480px){.rules{grid-template-columns:1fr}.rules > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+</style>
+<style>
+/* ---------- packages ---------- */
+.tag-ill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);border:1px solid var(--navy);padding:6px 10px}
+.tag-ill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--navy)}
+.tiers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:clamp(8px,1.4vw,18px);height:360px;border-bottom:1px solid var(--ink);margin-top:20px}
+.tier{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.tier:focus-visible{outline:1.5px solid var(--navy)}
+.tier .col{background:linear-gradient(180deg,var(--paper-3),var(--paper-2));border:1px solid var(--hair);border-bottom:0;transition:background .35s,border-color .35s,transform .9s cubic-bezier(.2,.7,.2,1);transform-origin:bottom}
+.tier .pr{font-family:var(--display);font-size:clamp(20px,2.4vw,34px);line-height:1;margin-bottom:10px;color:var(--ink);font-variant-numeric:lining-nums}
+.tier .nm{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute);margin-bottom:6px}
+.tier:hover .col{border-color:var(--silver-2)}
+.tier.on .col{background:var(--navy);border-color:var(--navy)}
+.tier.on .pr,.tier.on .nm{color:var(--accent)}
+.tiers.grow .col{transform:scaleY(.02)}
+.tierp{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(20px,4vw,56px);padding-top:26px;min-height:220px}
+.tierp h3{font-size:clamp(34px,3.6vw,50px)}
+.tierp .for{font-size:14px;color:var(--mute);margin-top:8px}
+.tierp ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--hair)}
+.tierp li{padding:10px 0;border-bottom:1px solid var(--hair);font-size:15px;display:grid;grid-template-columns:110px 1fr;gap:14px}
+.tierp li span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600;padding-top:3px}
+@media (max-width:700px){.tierp{grid-template-columns:1fr}.tiers{height:280px}.tierp li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- ladder ---------- */
+.ladder{position:relative;display:grid;gap:0;margin-top:10px}
+.rung{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,2fr);gap:24px;padding:22px 0;border-top:1px solid var(--hair);align-items:baseline;transition:padding-left .9s cubic-bezier(.2,.7,.2,1)}
+.rung:last-child{border-bottom:1px solid var(--ink)}
+.rung h4{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px);line-height:1.1}
+.rung p{font-size:15px;color:var(--ink-2)}
+.rung .t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--accent);text-align:right}
+.ladder.stepped .rung:nth-child(1){padding-left:0}
+.ladder.stepped .rung:nth-child(2){padding-left:6%}
+.ladder.stepped .rung:nth-child(3){padding-left:12%}
+.ladder.stepped .rung:nth-child(4){padding-left:18%}
+.ladder.stepped .rung:nth-child(4) h4{color:var(--accent)}
+@media (max-width:760px){.rung{grid-template-columns:1fr;gap:6px}.rung .t{text-align:left}.ladder.stepped .rung:nth-child(n){padding-left:0}}
+.formula{margin-top:clamp(40px,5vw,64px);display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;font-family:var(--display);font-size:clamp(24px,3vw,42px);line-height:1.1}
+.formula .op{color:var(--silver-2)}
+.formula b{font-weight:400;color:var(--accent)}
+
+/* ---------- under 50k ---------- */
+.u50{background:var(--navy-2);color:#fff;border-top:0}
+.u50 .eyebrow{color:#9FAAC0}
+.u50 .eyebrow b{color:#fff}
+.u50 .head .eyebrow::after{background:#3A4A6C}
+.u50 h2 em{color:#C9D2E3}
+.u50 .lede{color:#C9D1E0}
+.u50 .sprig{color:#5C6C8E;opacity:.35}
+.scale50{position:relative;margin-top:clamp(40px,5vw,64px);height:340px}
+.scale50 svg{width:100%;height:100%;display:block;overflow:visible}
+.scale50 text{font-family:var(--sans);fill:#AEB9CF;font-size:12px}
+.scale50 .lbl{font-family:var(--display);fill:#fff;font-size:18px}
+.msg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:clamp(48px,6vw,80px);padding-top:32px;border-top:1px solid #2A3A5E}
+.msg p{font-family:var(--display);font-size:clamp(26px,3vw,42px);line-height:1.15}
+.msg p + p{color:#C9D2E3;font-style:italic}
+@media (max-width:760px){.msg{grid-template-columns:1fr}.scale50{height:300px}}
+
+/* ---------- commercial journey loop ---------- */
+.loop{margin-top:10px;overflow-x:auto}
+.loop svg{min-width:720px;width:100%;height:auto;display:block}
+.loop text{font-family:var(--sans)}
+.loopsteps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:6px}
+.loopsteps div{font-size:14px;color:var(--ink-2);border-top:1px solid var(--hair);padding-top:10px}
+.loopsteps b{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+@media (max-width:900px){.loopsteps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- sales matrix ---------- */
+.matrix{display:grid;grid-template-columns:36px 1fr 1fr;grid-template-rows:1fr 1fr 36px;gap:0;max-width:980px}
+.matrix .cell{padding:clamp(20px,3vw,34px);border:1px solid var(--hair);margin:-1px 0 0 -1px;min-height:200px;transition:background .3s}
+.matrix .cell:hover{background:var(--paper-2)}
+.matrix .cell h4{margin:0 0 4px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,34px)}
+.matrix .cell .e{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.matrix .cell p{margin-top:10px;font-size:15px;color:var(--ink-2)}
+.matrix .ax{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600;display:flex;align-items:center;justify-content:space-between}
+.matrix .ay{writing-mode:vertical-rl;transform:rotate(180deg);flex-direction:row;grid-row:1/3;padding:0 8px}
+.matrix .axx{grid-column:2/4;padding:8px 4px 0}
+@media (max-width:700px){.matrix{grid-template-columns:1fr;grid-template-rows:auto}.matrix .ax{display:none}.matrix .cell{margin:0 0 -1px 0}}
+
+/* ---------- revenue build ---------- */
+.rev{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,72px);align-items:end}
+@media (max-width:900px){.rev{grid-template-columns:1fr}}
+.revchart{position:relative;height:420px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,2vw,28px);align-items:end;border-bottom:1px solid var(--ink)}
+.rbar{display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.rbar .v{font-family:var(--display);font-size:clamp(17px,1.8vw,24px);margin-bottom:8px;font-variant-numeric:lining-nums tabular-nums}
+.rbar .blk{background:var(--paper-3);border:1px solid var(--silver);border-bottom:0;transform-origin:bottom;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.rbar .l{position:absolute;bottom:-34px;left:0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.rbar.tot .blk{background:transparent;border:0;display:flex;flex-direction:column}
+.rbar.tot .seg{border:1px solid var(--navy);border-bottom:0;background:rgba(20,40,79,.08);transform-origin:bottom;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.rbar.tot .seg.s3{background:var(--navy)}
+.rbar.tot .seg.s2{background:rgba(20,40,79,.45)}
+.rbar.tot .v{color:var(--accent)}
+.revchart.pre .blk,.revchart.pre .seg{transform:scaleY(0)}
+.revside .total{font-family:var(--display);font-size:clamp(54px,6.6vw,96px);line-height:.95;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums}
+.revside .ill{margin-top:18px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.revside p{margin-top:14px;font-size:15px;color:var(--ink-2)}
+.revside .replay{margin-top:20px;background:none;border:1px solid var(--silver);padding:8px 16px;border-radius:999px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.revside .replay:hover{border-color:var(--navy);color:var(--accent)}
+.revnotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:70px;border-top:1px solid var(--hair)}
+.revnotes > div{padding:16px 16px 0 0;font-size:14px;color:var(--ink-2)}
+.revnotes > div + div{padding-left:16px;border-left:1px solid var(--hair)}
+.revnotes b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+@media (max-width:700px){.revnotes{grid-template-columns:1fr}.revnotes > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}.revchart{height:320px}}
+
+/* ---------- pilot ---------- */
+.pilot-hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:end}
+@media (max-width:900px){.pilot-hero{grid-template-columns:1fr}}
+.pilot-hero h2{font-size:clamp(44px,7vw,104px);line-height:.95}
+.why-wc{border-top:1px solid var(--ink)}
+.why-wc > div{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.why-wc .big{font-family:var(--display);font-size:clamp(30px,3vw,42px);color:var(--accent);line-height:1;min-width:4.2ch}
+.why-wc p{font-size:14.5px;color:var(--ink-2)}
+.proves{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.proves > div{padding:18px 20px 18px 0;border-bottom:1px solid var(--hair)}
+.proves > div:not(:nth-child(3n+1)){padding-left:20px;border-left:1px solid var(--hair)}
+.proves h5{margin:0 0 4px;font-size:15px;font-weight:600}
+.proves p{font-size:14px;color:var(--ink-2)}
+@media (max-width:760px){.proves{grid-template-columns:1fr}.proves > div:not(:nth-child(3n+1)){padding-left:0;border-left:0}}
+
+/* ---------- scale model ---------- */
+.ppr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:10px}
+.ppr > div{padding:22px 22px 26px 0;position:relative}
+.ppr > div + div{padding-left:22px;border-left:1px solid var(--hair)}
+.ppr .w{font-family:var(--display);font-size:clamp(34px,4vw,58px);line-height:1}
+.ppr > div:last-child .w{color:var(--accent);font-style:italic}
+.ppr .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute);margin-bottom:12px}
+.ppr ul{list-style:none;padding:0;margin:14px 0 0;font-size:14.5px;color:var(--ink-2)}
+.ppr li{padding:5px 0;border-bottom:1px solid var(--hair)}
+@media (max-width:860px){.ppr{grid-template-columns:1fr 1fr}.ppr > div:nth-child(3){padding-left:0;border-left:0;border-top:1px solid var(--hair)}.ppr > div:nth-child(4){border-top:1px solid var(--hair)}}
+@media (max-width:480px){.ppr{grid-template-columns:1fr}.ppr > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+
+/* ---------- flywheel ---------- */
+.fly{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:center}
+@media (max-width:900px){.fly{grid-template-columns:1fr}}
+.fly svg{width:100%;max-width:600px;height:auto;display:block;margin:0 auto;overflow:visible}
+.fnode{cursor:pointer}
+.fnode circle{fill:var(--paper);stroke:var(--silver-2);stroke-width:1;transition:all .35s}
+.fnode text{font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;font-weight:600;fill:var(--ink-2);text-transform:uppercase;transition:fill .35s}
+.fnode.on circle{fill:var(--navy);stroke:var(--navy)}
+.fnode.on text{fill:var(--navy)}
+.fnode:hover circle{stroke:var(--navy)}
+.fpanel{border-top:1px solid var(--ink);padding-top:20px;min-height:180px}
+.fpanel .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.fpanel h3{margin-top:8px;font-size:clamp(32px,3.4vw,46px)}
+.fpanel p{margin-top:12px;color:var(--ink-2);max-width:48ch}
+.fctl{display:flex;gap:10px;margin-top:20px}
+.fctl button{background:none;border:1px solid var(--silver);border-radius:999px;padding:7px 14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.fctl button:hover{border-color:var(--navy);color:var(--accent)}
+.expand{margin-top:clamp(56px,7vw,100px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;border-top:1px solid var(--hair);padding-top:30px;gap:20px}
+.expand > div{text-align:center}
+.expand svg{width:100%;max-width:220px;height:auto;display:block;margin:0 auto 14px;overflow:visible}
+.expand h4{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(20px,2vw,28px)}
+.expand p{font-size:13.5px;color:var(--mute);margin-top:4px}
+.expand > div:last-child h4{color:var(--accent)}
+@media (max-width:640px){.expand{grid-template-columns:1fr}}
+
+/* ---------- measurement ---------- */
+.meas{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--ink)}
+.meas > div{padding:20px 18px 0 0}
+.meas > div + div{padding-left:18px;border-left:1px solid var(--hair)}
+.meas h4{margin:0 0 4px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.meas .q{font-family:var(--display);font-size:20px;line-height:1.25;margin-bottom:12px}
+.meas ul{list-style:none;padding:0;margin:0;font-size:14px;color:var(--ink-2)}
+.meas li{padding:6px 0;border-top:1px solid var(--hair)}
+@media (max-width:980px){.meas{grid-template-columns:1fr 1fr}.meas > div{padding-bottom:20px}.meas > div:nth-child(odd){padding-left:0;border-left:0}}
+@media (max-width:520px){.meas{grid-template-columns:1fr}.meas > div + div{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+.approach{margin-top:clamp(36px,4vw,56px);display:flex;gap:14px 40px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2)}
+.approach b{color:var(--accent);font-weight:600}
+
+/* ---------- risks ---------- */
+.risks{border-top:1px solid var(--ink)}
+.risk{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,4fr) minmax(0,5fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.risk.h{padding:12px 0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.risk h5{margin:0;font-family:var(--display);font-weight:400;font-size:21px;line-height:1.2}
+.risk p{font-size:14.5px;color:var(--ink-2)}
+.risk p.m{color:var(--ink)}
+.risk p.m::before{content:"→ ";color:var(--accent)}
+@media (max-width:800px){.risk{grid-template-columns:1fr;gap:6px}.risk.h{display:none}}
+
+/* ---------- ask ---------- */
+.ask{background:var(--paper-2)}
+.askgrid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media (max-width:900px){.askgrid{grid-template-columns:1fr}}
+.notask{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);color:var(--silver-2);text-decoration:line-through;text-decoration-thickness:1px}
+.yesask{font-family:var(--display);font-size:clamp(44px,6.4vw,92px);line-height:.98;margin-top:10px;color:var(--accent)}
+.bts{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:34px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.bts span{display:inline-flex;align-items:center;color:var(--ink-2)}
+.bts span+span::before{content:"";width:28px;height:1px;background:var(--silver-2);margin:0 12px}
+.bts span.on{color:var(--accent)}
+.approve{border-top:1px solid var(--ink)}
+.approve > div{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.approve .ck{width:18px;height:18px;border:1px solid var(--navy);margin-top:4px;position:relative}
+.approve .ck::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid var(--navy);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.approve h5{margin:0;font-size:15.5px;font-weight:600}
+.approve p{font-size:14px;color:var(--ink-2);margin-top:2px}
+.proveline{margin-top:28px;font-size:14.5px;color:var(--ink-2)}
+.proveline b{color:var(--ink);font-weight:600}
+
+/* ---------- finale ---------- */
+.finale{background:var(--paper);text-align:left;overflow:hidden;padding-block:clamp(100px,14vw,200px)}
+.finale h2{font-size:clamp(58px,10vw,160px);line-height:.88;letter-spacing:-.025em}
+.finale h2 .the{display:block;font-size:.3em;font-style:italic;color:var(--accent);letter-spacing:0;margin-bottom:.3em}
+.lines{margin-top:clamp(40px,5vw,72px);display:grid;gap:0;border-top:1px solid var(--ink);max-width:900px}
+.lines div{font-family:var(--display);font-size:clamp(24px,3vw,42px);line-height:1.15;padding:14px 0;border-bottom:1px solid var(--hair)}
+.lines div:last-child{color:var(--accent);font-style:italic}
+.closer{display:flex;gap:10px 40px;flex-wrap:wrap;margin-top:40px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.closer span:last-child{color:var(--accent)}
+
+/* ---------- title selection ---------- */
+.titlesel{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--ink)}
+.tsh{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:28px;padding:18px 0;border-bottom:1px solid var(--hair)}
+.tsrow{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,3fr);gap:28px;padding:22px 0;border-bottom:1px solid var(--hair);align-items:start}
+.tsreg span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.tsreg h5{margin:6px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,36px);color:var(--accent);line-height:1.05}
+.tsreg em{font-family:var(--display);color:var(--mute);font-size:15px}
+.tsd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tsd b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(22px,2vw,28px);line-height:1}
+.tsd div:first-child b{color:var(--accent)}
+.tsd span{display:block;font-size:12px;color:var(--mute);margin-top:6px;line-height:1.35}
+.tsrow > p{font-size:14px;color:var(--ink-2)}
+@media (max-width:860px){.tsh,.tsrow{grid-template-columns:1fr;gap:12px}}
+/* ---------- audience-fit table ---------- */
+.tscmp{overflow-x:auto}
+.tscmp table{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;min-width:360px}
+.tscmp th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;text-align:right;padding:0 0 8px 10px;border-bottom:1px solid var(--hair)}
+.tscmp th:first-child{text-align:left;padding-left:0}
+.tscmp td{padding:7px 0 7px 10px;text-align:right;border-bottom:1px solid var(--hair);color:var(--ink-2)}
+.tscmp td:first-child{text-align:left;padding-left:0}
+.tscmp tr.pick td{color:var(--accent);font-weight:600}
+.tscmp tr.pick td:first-child{font-family:var(--display);font-weight:400;font-size:16px}
+/* ---------- channel roles ---------- */
+.chan{border-top:1px solid var(--ink)}
+.chr{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,2.4fr) minmax(0,3.2fr) minmax(0,2fr) minmax(0,1.8fr);gap:22px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.chr.h{padding:12px 0;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.chr h5{margin:0;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.15}
+.chr h5 small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.chr p{font-size:14px;color:var(--ink-2)}
+.chr p.job{font-family:var(--display);font-size:17px;color:var(--accent);line-height:1.3}
+@media (max-width:900px){.chr{grid-template-columns:1fr;gap:6px}.chr.h{display:none}}
+/* ---------- competition ---------- */
+.cotY{background:var(--paper-2)}
+.steps4{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.steps4 li{padding:22px 22px 22px 0}
+.steps4 li + li{padding-left:22px;border-left:1px solid var(--silver)}
+.steps4 .n{font-family:var(--display);font-style:italic;font-size:44px;color:var(--accent);line-height:1}
+.steps4 h4{margin:10px 0 6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.steps4 p{font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){.steps4{grid-template-columns:1fr 1fr}.steps4 li:nth-child(3){padding-left:0;border-left:0}.steps4 li:nth-child(n+3){border-top:1px solid var(--silver)}}
+.tomag{margin-top:clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);background:var(--navy);color:#fff}
+.tomag .eyebrow{color:#9FAAC0}.tomag .eyebrow b{color:#fff}
+.tmflow{display:flex;flex-wrap:wrap;gap:10px 0;margin:18px 0;font-family:var(--display);font-size:clamp(17px,1.7vw,22px)}
+.tmflow span{display:inline-flex;align-items:center;color:#C9D2E3}
+.tmflow span+span::before{content:"→";margin:0 12px;color:#5C6C8E;font-family:var(--sans)}
+.tmflow span.on{color:#fff;font-style:italic}
+.tomag p{color:#C9D1E0;font-size:15px;max-width:70ch}
+.recs{margin-top:clamp(40px,5vw,64px)}
+.recgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:14px}
+.recgrid > div{padding:18px 20px 18px 0;border-bottom:1px solid var(--silver)}
+.recgrid > div:not(:nth-child(3n+1)){padding-left:20px;border-left:1px solid var(--silver)}
+.recgrid h5{margin:0 0 6px;font-size:15px;font-weight:600}
+.recgrid p{font-size:14px;color:var(--ink-2)}
+@media (max-width:860px){.recgrid{grid-template-columns:1fr}.recgrid > div:not(:nth-child(3n+1)){padding-left:0;border-left:0}}
+/* ---------- sources ---------- */
+.sources{background:var(--paper);padding-block:60px}
+.sources ol{margin:18px 0 0;padding-left:20px;columns:2;column-gap:48px;font-size:13px;color:var(--ink-2)}
+.sources li{margin-bottom:8px;break-inside:avoid}
+.sources a{color:var(--ink-2)}
+@media (max-width:700px){.sources ol{columns:1}}
+.foot{padding:30px var(--gut);border-top:1px solid var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.cite{font-size:10px;vertical-align:super;text-decoration:none;color:var(--mute);margin-left:2px;font-family:var(--sans)}
+</style>
+<style>
+/* ================= v4 refresh: palette, section colour, chapters ================= */
+:root{--accent:#7A2335;--maroon:#6B1F2E;--gold:#B08D57;--gold-soft:#E3C68E;--gut:clamp(16px,4vw,56px)}
+body{background:#FBF8F2}
+.rail,.stem,.topbar,.sheet{display:none!important}
+:root{--rail:0px!important}
+@media (min-width:1200px){:root{--rail:0px}}
+.inner{max-width:1320px}
+.sec{padding-block:clamp(44px,5.5vw,80px);background:var(--bg,var(--paper));color:var(--ink);border-top:0;overflow:hidden}
+.cover{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,72px)}
+.head{margin-bottom:clamp(26px,3vw,44px);gap:16px}
+.lede{max-width:92ch}
+h2{font-size:clamp(34px,4.6vw,64px)}
+.bg-ivory{--bg:#FBF8F2;--paper:#FBF8F2}
+.bg-champagne{--bg:#F3EADB;--paper:#F3EADB;--hair:#E3D6C0;--paper-2:#EDE1CD;--paper-3:#E6D8C1}
+.bg-blush{--bg:#F6E8E4;--paper:#F6E8E4;--hair:#EBD3CD;--paper-2:#F0DCD6}
+.bg-mist{--bg:#E8EDF4;--paper:#E8EDF4;--hair:#D3DAE5;--paper-2:#DDE4EE;--paper-3:#D5DDE9}
+.bg-navy,.bg-maroon{--ink:#F7F2EA;--ink-2:#D8DDE7;--mute:#AEB7C9;--hair:rgba(255,255,255,.16);--silver:rgba(255,255,255,.34);--silver-2:#AEB7C9;--accent:#E3C68E;--navy:#E3C68E;--paper-2:rgba(255,255,255,.06);--paper-3:rgba(255,255,255,.12);--navy-soft:rgba(255,255,255,.08);color-scheme:dark}
+.bg-navy{--bg:#0F1D3A;--paper:#0F1D3A}
+.bg-maroon{--bg:#561827;--paper:#561827;--mute:#E2BCC3;--ink-2:#F0DADF;--silver-2:#E2BCC3}
+.bg-navy .eyebrow,.bg-maroon .eyebrow{color:var(--mute)}
+.bg-navy a,.bg-maroon a{color:var(--gold-soft)}
+.gold{color:var(--gold-soft)}
+
+/* chapter bands */
+.chap{display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:18px var(--gut);background:var(--cb);color:var(--ct);position:relative;overflow:hidden}
+.chap .cn{font-family:var(--display);font-style:italic;font-size:clamp(38px,4.4vw,60px);line-height:1;color:var(--cg);min-width:1.6em}
+.chap .cq{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);line-height:1.1}
+.chap .cs{margin-left:auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.75;text-align:right;max-width:46ch}
+@media (max-width:760px){.chap .cs{display:none}}
+.c-navy{--cb:#14284F;--ct:#fff;--cg:#E3C68E}
+.c-maroon{--cb:#6B1F2E;--ct:#fff;--cg:#E3C68E}
+.c-gold{--cb:#C9A869;--ct:#1B2130;--cg:#561827}
+
+/* sans headline variety */
+.h-sans h2{font-family:var(--sans);font-weight:300;letter-spacing:-.025em;line-height:1.05}
+.h-sans h2 em{font-family:var(--display);font-weight:400}
+
+/* collapsible */
+details.fold{border-top:1px solid var(--ink);border-bottom:1px solid var(--hair)}
+details.fold > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-family:var(--display);font-size:clamp(20px,2vw,26px)}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary .tg{font-family:var(--sans);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:7px 14px;border-radius:999px}
+details.fold[open] > summary .tg::after{content:" · close"}
+details.fold .ledger{border-top:1px solid var(--hair)}
+
+/* directory levels */
+.dlv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.lv{background:#fff;border:1px solid var(--hair);padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.lv.gold{background:#14284F;color:#fff;border-color:#14284F}
+.lvh{display:flex;gap:12px;align-items:flex-start}
+.lvn{font-family:var(--display);font-style:italic;font-size:40px;line-height:.9;color:var(--accent)}
+.lv.gold .lvn{color:#E3C68E}
+.lvh h4{margin:0;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.1}
+.pk{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.lv.gold .pk{color:#C9D2E3}
+.mini{background:#F6F4F0;border:1px solid #E6E2DA;padding:10px;min-height:118px;display:flex;flex-direction:column;gap:8px}
+.lv.gold .mini{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)}
+.mrow{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;background:#fff;padding:6px;border:1px solid #ECE8E1}
+.mrow .th{width:30px;height:30px;background:#DCD6CC;display:block}
+.mrow b{display:block;font-size:11.5px;font-weight:600;color:#1B2130;min-height:10px}
+.mrow em{display:block;font-style:normal;font-size:10px;color:#7B818B;min-height:8px}
+.mrow.dim{opacity:.45}
+.mrow.dim b{background:#E6E2DA;width:70%;height:8px}.mrow.dim em{background:#EEEAE3;width:45%;height:6px;margin-top:4px}
+.mrow.top{border-color:#7A2335;box-shadow:0 0 0 1px #7A2335 inset}
+.tagf{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:#7A2335;padding:3px 5px}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.strip i{height:22px;background:linear-gradient(135deg,#E8D8C4,#D9C7B0)}
+.card{background:#fff;border:1px solid #ECE8E1;padding:8px;display:flex;flex-direction:column;gap:5px}
+.card .img{height:44px;background:linear-gradient(150deg,#DDE3EC,#EFE6D8)}
+.card.big .img{height:56px;background:linear-gradient(150deg,#E9D6C2,#C9A869)}
+.card .lab{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#7A2335}
+.card .hl{display:block;height:7px;background:#D8D2C8;width:90%}.card .hl.s{width:55%}
+.pres{background:linear-gradient(135deg,#6B1F2E,#3D1019);color:#fff;padding:10px;display:flex;flex-direction:column;gap:3px;color:#E3C68E}
+.pres span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F0DADF}
+.pres b{font-family:var(--display);font-weight:400;font-size:17px;color:#fff}
+.lv .what{font-size:14px;line-height:1.45;color:var(--ink);font-weight:500}
+.lv.gold .what{color:#fff}
+.lv ul{list-style:none;padding:0;margin:0;font-size:13px;color:var(--ink-2);border-top:1px solid var(--hair)}
+.lv.gold ul{color:#C9D2E3;border-color:rgba(255,255,255,.18)}
+.lv li{padding:6px 0;border-bottom:1px solid var(--hair)}
+.lv.gold li{border-color:rgba(255,255,255,.12)}
+@media (max-width:1100px){.dlv{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.dlv{grid-template-columns:1fr}}
+
+/* timeline */
+.tlwrap{margin-top:clamp(32px,4vw,52px)}
+.tlhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:baseline;margin-bottom:14px}
+@media (max-width:760px){.tlhead{grid-template-columns:1fr}}
+.tlscroll{overflow-x:auto}
+.tl{position:relative;display:grid;grid-template-columns:170px repeat(12,minmax(58px,1fr));grid-template-rows:34px repeat(6,60px);min-width:920px;border-top:1px solid var(--ink);border-bottom:1px solid var(--hair)}
+.tl .peak{background:repeating-linear-gradient(135deg,rgba(122,35,53,.08) 0 1px,transparent 1px 8px);border-left:1px dashed var(--accent);position:relative}
+.tl .peak span{position:absolute;bottom:4px;right:6px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.tlc{grid-column:1;padding:8px 10px 8px 0;border-top:1px solid var(--hair);display:flex;flex-direction:column;justify-content:center}
+.tlc.h{grid-row:1;border-top:0}
+.tlc b{font-family:var(--display);font-weight:400;font-size:17px;line-height:1.1}
+.tlc small{font-size:10.5px;color:var(--mute);letter-spacing:.06em}
+.tlm{grid-row:1;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:700;display:flex;align-items:center;padding-left:6px;border-left:1px solid var(--hair)}
+.ev{align-self:center;margin:0 3px;padding:5px 8px;font-size:11.5px;line-height:1.2;font-weight:600;border-radius:2px;z-index:1}
+.ev small{display:block;font-weight:400;font-size:10px;opacity:.85}
+.ev.mag{background:#7A2335;color:#fff;box-shadow:0 6px 14px -8px rgba(122,35,53,.8)}
+.ev.prt{background:#14284F;color:#fff}
+.ev.soc{background:#C9A869;color:#1B2130}
+.ev.base{background:rgba(201,168,105,.25);height:8px;padding:0;align-self:center}
+.ev.dig{background:#DDE4EE;color:#14284F;border:1px solid #BFCBDC}
+.ev.iol{background:transparent;color:var(--ink-2);border:1px dashed var(--silver-2)}
+.ev.com{background:#F0DCD6;color:#6B1F2E}
+
+/* competition */
+.cy4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;position:relative}
+.cyp{display:flex;flex-direction:column;gap:14px}
+.cyn{display:flex;align-items:baseline;gap:10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#F0DADF}
+.cyn span{font-family:var(--display);font-style:italic;font-size:54px;line-height:.8;color:#E3C68E;letter-spacing:0}
+.cyp > p{font-size:14.5px;color:#F0DADF}
+.vis{height:270px;border-radius:14px;overflow:hidden;position:relative}
+.phone{background:#fff;color:#1B2130;border:6px solid #1B1116;border-radius:22px;display:flex;flex-direction:column}
+.ph-top{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:11px}
+.ph-top i{width:20px;height:20px;border-radius:50%;background:conic-gradient(#E3C68E,#7A2335,#E3C68E)}
+.ph-img{background:linear-gradient(160deg,#F6E8E4,#E9D2B2);color:#561827;padding:12px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.ph-img span{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.ph-img b{font-family:var(--display);font-weight:400;font-size:17px;line-height:1.15}
+.cm{font-size:11px;line-height:1.35;padding:6px 10px;border-top:1px solid #F0ECE6;color:#464D5B}
+.cm b{color:#1B2130;margin-right:4px}
+.dots{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:16px;align-content:center}
+.dots i{aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:#561827;transition:background .5s,transform .5s}
+.dots i.on{background:#E3C68E;transform:scale(1.12)}
+.poll{background:linear-gradient(170deg,#7A2335,#3D1019);border:1px solid rgba(255,255,255,.14);padding:18px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.plq{font-family:var(--display);font-size:19px;color:#fff;line-height:1.2;margin-bottom:4px}
+.pl{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;background:rgba(255,255,255,.12);border-radius:999px;padding:8px 14px;overflow:hidden;font-size:12.5px;color:#fff}
+.pl i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:rgba(227,198,142,.55);border-radius:999px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.pl span,.pl em{position:relative;font-style:normal;font-weight:600}
+.poll.pre .pl i{width:0}
+
+.vis.mcover{background:linear-gradient(165deg,#FBF8F2 0%,#F3EADB 60%,#E3C68E 100%);color:#561827;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;border:1px solid rgba(227,198,142,.6);padding:14px}
+.cv-m{font-family:var(--display);font-size:18px;letter-spacing:.02em;color:#1B2130}
+.cv-i{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.vis.mcover b{font-family:var(--display);font-style:italic;font-weight:400;font-size:30px;line-height:1}
+.cv-p{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:#561827;color:#E3C68E;padding:5px 10px;margin-top:4px}
+@media (max-width:980px){.cy4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cy4{grid-template-columns:1fr}}
+.tomag2{margin-top:clamp(28px,3.5vw,44px);padding:20px 24px;background:#E3C68E;color:#1B2130}
+.tomag2 .eyebrow{color:#561827}.tomag2 .eyebrow b{color:#561827}
+.tmflow2{display:flex;flex-wrap:wrap;gap:8px 0;margin-top:10px;font-family:var(--display);font-size:clamp(17px,1.7vw,22px)}
+.tmflow2 span{display:inline-flex;align-items:center}
+.tmflow2 span+span::before{content:"→";margin:0 12px;color:#7A2335;font-family:var(--sans)}
+.tmflow2 span.on{font-style:italic;color:#561827}
+.recs2{margin-top:clamp(28px,3.5vw,44px)}
+.recgrid2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.recgrid2 > div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:16px}
+.recgrid2 h5{margin:0 0 6px;font-size:14.5px;font-weight:600;color:#E3C68E}
+.recgrid2 p{font-size:13.5px;color:#F0DADF}
+@media (max-width:860px){.recgrid2{grid-template-columns:1fr}}
+
+/* under-R50k weddings */
+.wscale{margin-top:6px}
+.ws-track{position:relative;height:86px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+.ws-band{position:absolute;top:8px;bottom:8px;background:rgba(255,255,255,.1);border-left:1px solid rgba(255,255,255,.25);padding:8px 10px;overflow:hidden}
+.ws-band b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(14px,1.5vw,20px);color:#fff;white-space:nowrap}
+.ws-band span{font-size:11px;color:#AEB7C9;white-space:nowrap}
+.ws-band.us{background:#E3C68E;border-color:#E3C68E}
+.ws-band.us b{color:#0F1D3A}.ws-band.us span{color:#561827;font-weight:600}
+.ws-band.lux{background:rgba(255,255,255,.04)}
+.ws-axis{position:relative;height:22px;margin-top:6px}
+.ws-axis span{position:absolute;transform:translateX(-50%);font-size:11px;color:#AEB7C9}
+.ws-axis span:first-child{transform:none}.ws-axis span:last-child{transform:translateX(-100%)}
+.ws-brackets{position:relative;height:40px;margin-top:4px;margin-bottom:10px}
+.br{position:absolute;top:0;border-top:1px solid #AEB7C9;padding-top:8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#AEB7C9;white-space:nowrap}
+.br.us{border-color:#E3C68E;color:#E3C68E}
+@media (max-width:700px){.ws-band span{display:none}.br{font-size:9.5px;white-space:normal}}
+.wfacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(24px,3vw,40px);border-top:1px solid rgba(255,255,255,.3)}
+.wfacts > div{padding:18px 18px 0 0}
+.wfacts > div + div{padding-left:18px;border-left:1px solid rgba(255,255,255,.14)}
+.wfacts b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,3.8vw,52px);line-height:1;color:#E3C68E}
+.wfacts p{margin-top:8px;font-size:14px;color:#D8DDE7}
+@media (max-width:860px){.wfacts{grid-template-columns:1fr 1fr}.wfacts > div:nth-child(3){padding-left:0;border-left:0}.wfacts > div{padding-bottom:16px}}
+.wopp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(28px,3.5vw,44px)}
+.wopp > div{background:#FBF8F2;color:#1B2130;padding:22px}
+.wopp .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#7A2335}
+.wopp h4{margin:8px 0;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.15}
+.wopp p{font-size:14.5px;color:#464D5B}
+.wopp a{color:#7A2335}
+@media (max-width:860px){.wopp{grid-template-columns:1fr}}
+.wmsg{margin-top:clamp(28px,3.5vw,44px);display:flex;flex-wrap:wrap;gap:6px 24px;font-family:var(--display);font-size:clamp(28px,3.6vw,50px);line-height:1.1}
+.wmsg em{color:#E3C68E}
+.wtest{margin-top:16px;font-size:14.5px;color:#D8DDE7}
+.wtest b{color:#E3C68E}
+
+/* sales: direct only */
+.sell3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.sell3 .cell{padding:clamp(20px,2.6vw,32px) 24px clamp(20px,2.6vw,32px) 0}
+.sell3 .cell + .cell{padding-left:24px;border-left:1px solid var(--hair)}
+.sell3 h4{margin:6px 0 4px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,34px)}
+.sell3 .e{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.sell3 p{font-size:15px;color:var(--ink-2)}
+.sellax{display:flex;align-items:center;gap:12px;margin-top:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.sellax i{flex:1;height:1px;background:var(--silver-2);position:relative}
+.sellax i::after{content:"";position:absolute;right:0;top:-3px;border:3px solid transparent;border-left:6px solid var(--silver-2)}
+@media (max-width:760px){.sell3{grid-template-columns:1fr}.sell3 .cell + .cell{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
+/* legibility: sturdier display face */
+h1,h2,h3{font-weight:400}
+.cover h1{font-weight:450;letter-spacing:-.02em}
+.finale h2{font-weight:450}
+/* ask: dark */
+.ask .notask{color:#AEB7C9}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="lf" d="M0 0 C 12 -11 32 -12 48 0 C 32 12 12 11 0 0 Z M5 0 L 43 0"/>
+    <symbol id="sprig" viewBox="0 0 240 420">
+      <g fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M120 418 C 116 330 128 250 118 170 C 110 110 124 60 150 6"/>
+        <use href="#lf" transform="translate(119 384) rotate(-38)"/>
+        <use href="#lf" transform="translate(120 352) rotate(-146)"/>
+        <use href="#lf" transform="translate(122 312) rotate(-34) scale(.95)"/>
+        <use href="#lf" transform="translate(122 276) rotate(-150) scale(.92)"/>
+        <use href="#lf" transform="translate(121 236) rotate(-30) scale(.88)"/>
+        <use href="#lf" transform="translate(119 198) rotate(-152) scale(.84)"/>
+        <use href="#lf" transform="translate(117 158) rotate(-28) scale(.78)"/>
+        <use href="#lf" transform="translate(117 122) rotate(-150) scale(.72)"/>
+        <use href="#lf" transform="translate(121 88) rotate(-26) scale(.62)"/>
+        <use href="#lf" transform="translate(130 56) rotate(-140) scale(.52)"/>
+        <use href="#lf" transform="translate(140 30) rotate(-30) scale(.42)"/>
+        <circle cx="150" cy="6" r="3"/>
+      </g>
+    </symbol>
+    <symbol id="rings" viewBox="0 0 30 18">
+      <g fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="10" cy="9" r="7"/><circle cx="20" cy="9" r="7"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- chapter rail -->
+<nav class="rail" aria-label="Chapters">
+  <a class="mark" href="#top"><svg class="rings" width="26" height="16"><use href="#rings"/></svg>The Wedding Collective</a>
+  <ol id="railList"></ol>
+  <div class="rfoot">Volt.Africa · Strategy<br>Management proposal</div>
+</nav>
+<div class="topbar" id="topbar"><span class="t">The Wedding Collective</span><button id="openSheet" type="button">Chapters</button></div>
+<div class="sheet" id="sheet" hidden><button class="x" id="closeSheet" type="button">Close</button><div id="sheetList"></div></div>
+
+<svg class="stem" viewBox="0 0 28 1000" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M14 0 C 8 200 20 400 14 600 C 8 800 20 900 14 1000" stroke="#E2E4E7" stroke-width="1" vector-effect="non-scaling-stroke"/>
+  <path id="stemFill" d="M14 0 C 8 200 20 400 14 600 C 8 800 20 900 14 1000" stroke="#14284F" stroke-width="1.2" vector-effect="non-scaling-stroke" pathLength="1000" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+</svg>
+
+<main id="top">
+
+<!-- ================= COVER ================= -->
+<section class="sec cover bg-ivory" id="cover" data-ch="1">
+  <svg class="sprig" style="right:-40px;top:40px;width:clamp(200px,26vw,380px);height:auto;aspect-ratio:240/420;transform:rotate(18deg)"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="meta">
+      <span class="eyebrow"><b>Executive proposal</b> · For management</span>
+      <span class="eyebrow">Volt.Africa Strategy · September 2026</span>
+    </div>
+    <h1><span class="the">The</span>Wedding<span class="l2">Collective</span></h1>
+    <div class="under">
+      <p class="prop">A regional wedding media ecosystem connecting couples with the businesses, products, services, places and experiences that make a wedding happen.</p>
+      <div>
+        <div class="flow"><span>Western Cape pilot</span><span>Prove</span><span>Replicate</span></div>
+        <p class="small" style="margin-top:14px">A publisher-led commercial platform. It starts in one region, proves the model, then scales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROPOSITION ================= -->
+<div class="chap c-navy" id="ch-what"><span class="cn">I</span><span class="cq">What is it?</span><span class="cs">The proposition · The regional model</span></div>
+<section class="sec bg-champagne" id="what" data-ch="1">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>What is it</b></span>
+      <h2>A wedding <em>ecosystem</em>,<br>owned by a publisher.</h2>
+    </div>
+    <div class="not">
+      <div><span class="eyebrow">It is not</span><p class="s" style="margin-top:10px">Another bridal magazine</p></div>
+      <div><span class="eyebrow">And it is not</span><p class="s" style="margin-top:10px">Another wedding directory</p></div>
+    </div>
+    <div class="is">
+      <h3>It is one platform that joins <em>eleven</em> things Volt already knows how to do.</h3>
+      <div class="stack">
+        <span>Editorial</span><span>Print</span><span>Digital</span><span>Supplier discovery</span><span>Directory</span><span>Social</span><span>Commercial content</span><span>Advertising</span><span>Regional audiences</span><span>Publisher-owned platforms</span><span>Local business participation</span>
+      </div>
+    </div>
+    <div class="equation">
+      <div class="side"><h4>The publisher brings</h4><p>Audience, content capability, regional footprint, sales infrastructure and several media channels.</p></div>
+      <div class="plus">+</div>
+      <div class="side"><h4>The wedding market brings</h4><p>A large network of businesses that need discovery, awareness, consideration, enquiries and customers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REGIONAL MODEL ================= -->
+<section class="sec bg-ivory" id="regional" data-ch="1">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The regional model</b></span>
+      <h2>One master brand.<br><em>Regional editions.</em></h2>
+      <p class="lede">The Wedding Collective is the master brand. It runs through regional editions, each with its own local audience and suppliers. The Western Cape is the first edition and the pilot. Earlier thinking under the working name "Cape Wedding Collective" is now the Western Cape edition of this larger model.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="masthead" id="editions"></div>
+        <div class="edpanel" id="edpanel"></div>
+      </div>
+      <div class="mapwrap">
+        <svg id="samap" viewBox="0 0 600 520" role="img" aria-label="Stylised map of South Africa showing the Western Cape pilot and future regional editions"></svg>
+        <p class="small mapnote">Stylised outline. Halos mark indicative edition markets, not provincial boundaries. Select an edition to see its role.</p>
+      </div>
+    </div>
+    <div class="story-flow"><span>One master platform</span><span>Regional editions</span><span>Local audiences</span><span>Local suppliers</span><span>Scalable commercial model</span></div>
+  </div>
+</section>
+
+<!-- ================= MARKET / PROBLEM ================= -->
+<div class="chap c-maroon" id="ch-market"><span class="cn">II</span><span class="cq">Why does the market need it?</span><span class="cs">The market problem · The audience</span></div>
+<section class="sec bg-mist" id="market" data-ch="2">
+  <svg class="sprig" style="left:-70px;bottom:-60px;width:clamp(160px,18vw,260px);height:auto;aspect-ratio:240/420;transform:rotate(-24deg)"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The market problem</b></span>
+      <h2>Couples decide in a window.<br><em>Suppliers are scattered across it.</em></h2>
+    </div>
+    <div class="split">
+      <div>
+        <p class="small" style="margin-bottom:14px">Wedding businesses need to reach people while they are</p>
+        <div class="verbs" id="verbs"><span>researching</span><span>comparing</span><span>planning</span><span>selecting</span><span>booking</span><span>purchasing</span></div>
+      </div>
+      <div class="supply">
+        <span class="eyebrow">The supply side is highly fragmented</span>
+        <div class="cloud">
+          <span class="s1">Venues</span><span class="s4">Large national brands</span><span class="s2">Photographers</span><span class="s3">Florists</span><span class="s4">Home-based businesses</span><span class="s2">Dress designers</span><span class="s3">Caterers</span><span class="s1">Jewellery</span><span class="s4">Established regional businesses</span><span class="s3">Beauty</span><span class="s2">Décor</span><span class="s3">Wedding planners</span><span class="s4">Small independent suppliers</span><span class="s2">Entertainment</span><span class="s3">Stationery</span><span class="s1">Honeymoon &amp; travel</span><span class="s3">Financial services</span><span class="s2">Home &amp; lifestyle</span><span class="s4">…and many other local service providers</span>
+        </div>
+      </div>
+    </div>
+    <div class="facts">
+      <div><div class="big num" data-count="97510">97,510</div><p>civil marriages registered in South Africa in 2024.<sup><a href="#src-1">1</a></sup></p></div>
+      <div><div class="big num">23.0<small>%</small></div><p>registered in the Western Cape (22,382), the second-largest province after Gauteng.<sup><a href="#src-1">1</a></sup></p></div>
+      <div><div class="big num">Sep–Dec</div><p>peak season: warmer months are most popular, with December the busiest month (11.5%).<sup><a href="#src-1">1</a></sup></p></div>
+      <div><div class="big num">34 <small>/</small> 38</div><p>median age of brides and grooms in 2023, up from 31 and 35 in 2014.<sup><a href="#src-2">2</a></sup></p></div>
+    </div>
+    <p class="small" style="margin-top:18px;max-width:80ch">Registered civil marriages understate total wedding activity. Customary marriages and civil unions are counted separately (2,634 and 2,229 in 2024), and some religious and cultural ceremonies are never registered. We use these figures for scale and seasonality, not as a market size.<sup><a href="#src-1">1</a></sup></p>
+    <div class="callout">
+      <div class="bar"></div>
+      <p>The opportunity is bigger than selling ads into a bridal title. It is a structured ecosystem that businesses can enter at different levels and <em class="navy">grow into</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUDIENCE JOURNEY ================= -->
+<section class="sec bg-blush" id="audience" data-ch="2">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The audience</b></span>
+      <h2>Not "brides".<br><em>Everyone a wedding touches.</em></h2>
+    </div>
+    <p class="aud"><s>Brides</s> → <b>Couples</b>, people planning weddings, <b>families</b>, wedding parties, people researching <b>suppliers</b> and <b>venues</b>, people looking for inspiration, people making <b>purchasing decisions</b>, and guests and participants where relevant.</p>
+    <div class="journey">
+      <div class="jtrack" id="jtrack" role="tablist" aria-label="Wedding journey"></div>
+      <div class="jpanel" id="jpanel" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LANDSCAPE ================= -->
+<div class="chap c-gold" id="ch-landscape"><span class="cn">III</span><span class="cq">Who already exists?</span><span class="cs">Competitive landscape · Positioning map</span></div>
+<section class="sec bg-ivory" id="landscape" data-ch="3">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Competitive landscape</b></span>
+      <h2>Wedding media already exists.<br><em>So why would Volt build this?</em></h2>
+      <p class="lede">We reviewed the public propositions of South African wedding publications, directories, planning platforms, venue sites, blogs and regional specialists (September 2026). Descriptions reflect what each business says about itself. Open the list for each player and its source.</p>
+    </div>
+    <details class="fold"><summary>The 12 players we reviewed, by category <span class="tg">Open</span></summary><div class="ledger" id="ledger"></div></details>
+    <div class="head" style="margin:clamp(56px,7vw,96px) 0 0">
+      <span class="eyebrow"><b>Where they are strong</b></span>
+    </div>
+    <div class="strong">
+      <div><h5>Wedding-specific intent</h5><p>Couples arrive already planning. That audience is valuable and hard to replicate quickly.</p></div>
+      <div><h5>Supplier relationships</h5><p>Several players have spent 15 to 25 years building vendor networks: Pink Book since 2008, SA-Venues since 1999, Wedding Collection since 2000.</p></div>
+      <div><h5>Search and discovery depth</h5><p>National directories offer category and province filters, reviews and large listings. Happly states 1,149 venues and 3,931 vendors.</p></div>
+      <div><h5>Planning utility</h5><p>Budget trackers, checklists, guest lists, wedding websites and RSVP tools keep couples returning (The Wedding Directory, Happly).</p></div>
+      <div><h5>Inspiration and expertise</h5><p>Blogs and digital magazines have established editorial voices and styled-shoot content (Confetti Daydreams, Wedding Collection).</p></div>
+      <div><h5>Proof that regional works</h5><p>Marriage Meander says it has combined a KZN directory, an annual print guide and an expo for over 17 years.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POSITIONING MAP ================= -->
+<section class="sec bg-champagne" id="position" data-ch="3">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Competitive positioning</b></span>
+      <h2>A different position,<br><em>not a manufactured winner.</em></h2>
+      <p class="lede">Placement reflects Strategy's reading of each player's public proposition. It is directional, not measured. The map shows where The Wedding Collective would sit. It does not claim the position is better.</p>
+    </div>
+    <div class="pmap">
+      <div>
+        <div class="filters" id="pfilters"></div>
+        <svg id="pmapsvg" viewBox="0 0 640 520" role="img" aria-label="Positioning map: regional to national, directory to publisher-led content ecosystem"></svg>
+      </div>
+      <div class="pinfo" id="pinfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHITE SPACE ================= -->
+<div class="chap c-navy" id="ch-open"><span class="cn">IV</span><span class="cq">Where is the opportunity?</span><span class="cs">White space · The regional advantage</span></div>
+<section class="sec bg-ivory" id="open" data-ch="4">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Where the market is open</b></span>
+      <h2>The gap is not a better directory.<br><em>It is a different operator.</em></h2>
+      <p class="lede">Based on the propositions reviewed, these are the areas where we did not find a strong incumbent. Each needs validating in the pilot.</p>
+    </div>
+    <div class="open4">
+      <div><h4>Regional depth tied to a news audience</h4><p>Most platforms reviewed are national directories organised by province. The regional specialists we found are founder-led and cover one region. None is attached to a regional news and lifestyle audience.</p></div>
+      <div><h4>Reaching couples before they search</h4><p>Directories serve couples who arrive ready to search. A publisher reaches people earlier, at the dream stage, through general news, lifestyle and social audiences that are not yet on a wedding site.</p></div>
+      <div><h4>Print, digital and social in one sale</h4><p>Wedding magazines have largely moved online. Wedding Collection went fully digital in 2016. Outside annual regional guides, few players we found sell regional print, digital and social together.</p></div>
+      <div><h4>A clear ladder for small suppliers</h4><p>Free and basic listings are common. What we did not find is a simple path from a R3,500 listing to an integrated regional campaign across several media channels.</p></div>
+    </div>
+    <div class="versus">
+      <div><h4>Existing wedding platforms</h4><p>Wedding-specific expertise and discovery.</p></div>
+      <div><h4>Volt</h4><p>Established publishing brands, regional audiences, editorial capability, print, digital, social and commercial sales infrastructure.</p></div>
+    </div>
+    <p class="verdict">The opening is a <em class="navy">regional, publisher-led wedding ecosystem</em>. It sits alongside the directories rather than competing to be another one.</p>
+  </div>
+</section>
+
+<!-- ================= REGIONAL ADVANTAGE ================= -->
+<section class="sec bg-blush" id="advantage" data-ch="4">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The regional advantage</b></span>
+      <h2>Weddings are planned<br><em>locally.</em></h2>
+      <p class="lede">A couple marrying in Cape Town needs different businesses from a couple marrying in Durban or Johannesburg. National platforms handle this with filters. A regional edition is built for it.</p>
+    </div>
+    <div class="cities">
+      <div><h4>Cape Town</h4><p>Local venues, local caterers, local florists, local audience.</p></div>
+      <div><h4>Durban</h4><p>A different supplier base and a different editorial agenda.</p></div>
+      <div><h4>Johannesburg</h4><p>A different market again, with its own brands and budgets.</p></div>
+    </div>
+    <ul class="adv">
+      <li>Local relevance</li><li>Local discovery</li><li>Local suppliers</li><li>Local advertising opportunities</li><li>Smaller commercial entry points</li><li>Stronger supplier relationships</li><li>Regional sales opportunities</li><li>More relevant content</li><li>Replicable market expansion</li>
+    </ul>
+    <div class="keypoint"><p>The regional model lets Volt earn from major brands <em>and</em> from smaller local businesses.</p></div>
+  </div>
+</section>
+
+<!-- ================= PUBLISHER ADVANTAGE ================= -->
+<div class="chap c-maroon" id="ch-why-volt"><span class="cn">V</span><span class="cq">Why can Volt play here?</span><span class="cs">The publisher advantage · One title per region</span></div>
+<section class="sec bg-ivory" id="why-volt" data-ch="5">
+  <svg class="sprig" style="right:-50px;top:-30px;width:clamp(150px,16vw,240px);height:auto;aspect-ratio:240/420;transform:rotate(200deg)"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Why the publisher has an advantage</b></span>
+      <h2>Why do this through a publisher,<br><em>not a standalone website?</em></h2>
+    </div>
+    <div class="index">
+      <div><h4>Audience</h4><p>Existing publishing audiences across IOL and the National Media Group titles. People are already there before they start searching for a wedding.</p></div>
+      <div><h4>Regional footprint</h4><p>Regional titles and newsrooms that can operate locally. In the Western Cape pilot that means the Cape Times as the anchor title, IOL for national reach and Cape Community Media titles for local suppliers.</p></div>
+      <div><h4>Content</h4><p>Editorial capability and trusted publishing environments. This is what gives a directory authority.</p></div>
+      <div><h4>Distribution</h4><p>Digital, social and print. One audience can be reached across several channels and sold as one package.</p></div>
+      <div><h4>Sales</h4><p>Existing direct commercial relationships and sales pods. We do not need a new sales force to launch.</p></div>
+      <div><h4><em class="navy">Scale</em></h4><p>One model, adapted to several regions. National lifestyle titles in the portfolio, such as Glamour and House &amp; Garden, give a route to multi-region brand campaigns.</p></div>
+    </div>
+    <div class="titlesel">
+      <div class="tsh"><span class="eyebrow"><b>One title per region</b> · chosen for audience fit</span><p class="small">Each edition has one anchor title, chosen on who reads it rather than on how many. We looked for people at the life stage of getting married, a strong share of women, spending power, and an environment that suits a premium wedding brand. IOL adds national reach to every edition, and community titles are matched to supplier areas. Source: Brand Mapp 2025, National Media Group readership data.<a class="cite" href="#src-17">17</a></p></div>
+
+      <div class="tsrow">
+        <div class="tsreg"><span>Western Cape · pilot</span><h5>Cape Times</h5><em>anchor title</em></div>
+        <div class="tscmp"><table>
+          <thead><tr><th></th><th>Aged 25–44</th><th>Women</th><th>SEM 8–10</th><th>Income R30k+</th></tr></thead>
+          <tbody>
+          <tr class="pick"><td>Cape Times</td><td>65%</td><td>49%</td><td>45%</td><td>41%</td></tr>
+          <tr><td>Weekend Argus</td><td>54%</td><td>49%</td><td>56%</td><td>51%</td></tr>
+          <tr><td>Cape Argus</td><td>52%</td><td>44%</td><td>58%</td><td>47%</td></tr>
+          <tr><td>Daily Voice</td><td>68%</td><td>52%</td><td>44%</td><td>42%</td></tr>
+          </tbody></table></div>
+        <p>41% of Cape Times readers are aged 25–34, and 65% are aged 25–44. That is the band around the median age at marriage, which is 34 for brides and 38 for grooms. It has the closest gender balance of the premium titles, the largest readership (451,454), and a masthead that suits a premium wedding brand. Weekend Argus has more spending power and a weekend lifestyle setting, but fewer readers at the marrying age. Daily Voice is younger still, but its tabloid voice doesn't match the brand.</p>
+      </div>
+
+      <div class="tsrow">
+        <div class="tsreg"><span>KwaZulu-Natal · candidate</span><h5>Daily News</h5><em>anchor title</em></div>
+        <div class="tscmp"><table>
+          <thead><tr><th></th><th>Aged 25–44</th><th>Women</th><th>SEM 8–10</th><th>Income R30k+</th></tr></thead>
+          <tbody>
+          <tr class="pick"><td>Daily News</td><td>65%</td><td>67%</td><td>44%</td><td>37%</td></tr>
+          <tr><td>The Mercury</td><td>46%</td><td>48%</td><td>59%</td><td>52%</td></tr>
+          <tr><td>Post</td><td>61%</td><td>68%</td><td>41%</td><td>36%</td></tr>
+          </tbody></table></div>
+        <p>Two in three Daily News readers are women, and 44% are aged 25–34. It has KZN's largest readership (1,298,488), and its editor describes it as "a vibrant platform for interactivity with readers", which suits a reader competition. The Mercury is wealthier but older and male-leaning. Post has a strong female profile but serves one community.</p>
+      </div>
+
+      <div class="tsrow">
+        <div class="tsreg"><span>Gauteng · candidate</span><h5>The Star</h5><em>anchor title</em></div>
+        <div class="tscmp"><table>
+          <thead><tr><th></th><th>Aged 25–44</th><th>Women</th><th>SEM 8–10</th><th>Income R30k+</th></tr></thead>
+          <tbody>
+          <tr class="pick"><td>The Star</td><td>53%</td><td>49%</td><td>59%</td><td>49%</td></tr>
+          <tr><td>Pretoria News</td><td>65%</td><td>37%</td><td>54%</td><td>40%</td></tr>
+          </tbody></table></div>
+        <p>The Star has balanced gender, strong spending power and the widest reach in Greater Johannesburg. Pretoria News is younger but two-thirds male. The Saturday Star age and gender figures in the data sheet match The Star's exactly, so check them before comparing the weekend title.</p>
+      </div>
+
+      <div class="tsrow">
+        <div class="tsreg"><span>Eastern Cape · later</span><h5>To be confirmed</h5><em>no anchor yet</em></div>
+        <div class="tscmp"><p class="small" style="margin:0">The current readership data has no Eastern Cape daily.</p></div>
+        <p>This edition would start from IOL and the regional supplier base until an anchor title is identified.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ECOSYSTEM ================= -->
+<div class="chap c-gold" id="ch-ecosystem"><span class="cn">VI</span><span class="cq">How does it work?</span><span class="cs">Ecosystem · Channels · Directory · Couple of the Year · Publishing model</span></div>
+<section class="sec bg-champagne" id="ecosystem" data-ch="6">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The product ecosystem</b></span>
+      <h2>One wedding audience.<br><em>Six ways to earn from it.</em></h2>
+      <p class="lede">The product is an ecosystem, not a list of ad units. Each channel does a different job for the couple and creates a different commercial opportunity. Select a petal.</p>
+    </div>
+    <div class="eco">
+      <svg id="flower" viewBox="0 0 560 560" role="group" aria-label="Product ecosystem"></svg>
+      <div class="ecop" id="ecop" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHANNEL ROLES ================= -->
+<section class="sec bg-ivory h-sans" id="channels" data-ch="6">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>What each channel does</b></span>
+      <h2>Every channel has<br><em>one clear job.</em></h2>
+      <p class="lede">Every channel sells to the same regional wedding audience, but each has a different role. Shown here for the Western Cape pilot, with the Cape Times as the anchor title.</p>
+    </div>
+    <div class="chan">
+      <div class="chr h"><span>Channel</span><span>Its job</span><span>What it carries</span><span>What it sells</span><span>How we measure it</span></div>
+      <div class="chr"><h5>The magazine<small>print · paid</small></h5><p class="job">The flagship. The product couples buy and keep.</p><p>Planning guide, regional supplier showcase, real weddings, and the Couple of the Year winner.</p><p>Supplier packages and cover sales</p><p>Copies sold, ad revenue</p></div>
+      <div class="chr"><h5>Cape Times<small>print · anchor title</small></h5><p class="job">Credibility, and reach into the right life stage.</p><p>Wedding features, competition launch and finalists, magazine on-sale promotion.</p><p>Print ads, advertorial, supplements</p><p>Ad sales, magazine uplift</p></div>
+      <div class="chr"><h5>Digital<small>title site · hub · directory</small></h5><p class="job">Always-on discovery, and the audience list we own.</p><p>The directory, planning articles, the top-10 engagement stories, and the 2028 Brides sign-up.</p><p>Listings, display, partnered content</p><p>Users, enquiries, sign-ups</p></div>
+      <div class="chr"><h5>Social<small>Cape Times Facebook · Instagram</small></h5><p class="job">Build the community of brides-to-be.</p><p>The competition post, finalist stories, the vote, supplier tags, and boosted partner posts.</p><p>Sponsored posts, prize partnerships</p><p>Entries, votes, follower growth</p></div>
+      <div class="chr"><h5>IOL<small>national digital</small></h5><p class="job">Scale, and a route to national brands.</p><p>Wedding planning content, search traffic, and national campaign placements.</p><p>National display and content</p><p>Reach, referral to the hub</p></div>
+      <div class="chr"><h5>Community titles<small>Cape Community Media</small></h5><p class="job">Local supplier presence, suburb by suburb.</p><p>Local supplier ads and entry-level listings in print.</p><p>Entry and Growth packages</p><p>Local supplier sign-ups</p></div>
+    </div>
+    <div class="tlwrap">
+      <div class="tlhead"><span class="eyebrow"><b>The pilot year</b> · when each channel works</span><p class="small">An illustrative rhythm for a January start. Final dates will be set in pilot planning. The shaded months, September to December, are when most weddings take place.<a class="cite" href="#src-1">1</a></p></div>
+      <div class="tlscroll"><div class="tl">
+        <div class="peak" style="grid-column:10/14;grid-row:1/8"><span>Peak wedding season</span></div>
+        <div class="tlc h" style="grid-column:1"></div><div class="tlm" style="grid-column:2">Jan</div><div class="tlm" style="grid-column:3">Feb</div><div class="tlm" style="grid-column:4">Mar</div><div class="tlm" style="grid-column:5">Apr</div><div class="tlm" style="grid-column:6">May</div><div class="tlm" style="grid-column:7">Jun</div><div class="tlm" style="grid-column:8">Jul</div><div class="tlm" style="grid-column:9">Aug</div><div class="tlm" style="grid-column:10">Sep</div><div class="tlm" style="grid-column:11">Oct</div><div class="tlm" style="grid-column:12">Nov</div><div class="tlm" style="grid-column:13">Dec</div>
+
+        <div class="tlc" style="grid-row:2"><b>The magazine</b><small>print · paid</small></div>
+        <span class="ev mag" style="grid-row:2;grid-column:4/5">Issue 1<small>Couple of the Year</small></span>
+        <span class="ev mag" style="grid-row:2;grid-column:7/8">Issue 2</span>
+        <span class="ev mag" style="grid-row:2;grid-column:9/10">Issue 3<small>before the peak</small></span>
+
+        <div class="tlc" style="grid-row:3"><b>Cape Times</b><small>anchor title · print</small></div>
+        <span class="ev prt" style="grid-row:3;grid-column:2/4">Competition launch · Top 10</span>
+        <span class="ev prt" style="grid-row:3;grid-column:4/5">On sale</span>
+        <span class="ev prt" style="grid-row:3;grid-column:7/8">On sale</span>
+        <span class="ev prt" style="grid-row:3;grid-column:9/10">On sale</span>
+
+        <div class="tlc" style="grid-row:4"><b>Social</b><small>Facebook · Instagram</small></div>
+        <span class="ev base" style="grid-row:4;grid-column:2/14"></span>
+        <span class="ev soc" style="grid-row:4;grid-column:2/5">Couple of the Year: enter · shortlist · vote</span>
+        <span class="ev soc" style="grid-row:4;grid-column:7/8">Launch</span>
+        <span class="ev soc" style="grid-row:4;grid-column:9/10">Launch</span>
+
+        <div class="tlc" style="grid-row:5"><b>Digital</b><small>hub · directory</small></div>
+        <span class="ev dig" style="grid-row:5;grid-column:2/14">Always on: directory, planning content, top 10 stories, the 2028 Brides sign-up</span>
+
+        <div class="tlc" style="grid-row:6"><b>IOL</b><small>national</small></div>
+        <span class="ev iol" style="grid-row:6;grid-column:2/14">Search traffic and national reach, boosted at each issue</span>
+
+        <div class="tlc" style="grid-row:7"><b>Community titles</b><small>local suppliers</small></div>
+        <span class="ev com" style="grid-row:7;grid-column:3/5">Supplier ads</span>
+        <span class="ev com" style="grid-row:7;grid-column:6/7">Supplier ads</span>
+        <span class="ev com" style="grid-row:7;grid-column:8/9">Supplier ads</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIRECTORY ================= -->
+<section class="sec bg-mist h-sans" id="directory" data-ch="6">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The directory and discovery model</b></span>
+      <h2>Five levels of visibility. <em>Each one looks different to a couple.</em></h2>
+      <p class="lede">The directory is the always-on commercial layer that earns between issues. Picture a couple searching for florists in the Winelands: this is what they see from a supplier at each level. The five levels match the five packages.</p>
+    </div>
+    <div class="dlv">
+      <div class="lv">
+        <div class="lvh"><span class="lvn">1</span><div><h4>Be found</h4><span class="pk">Entry · R3,500</span></div></div>
+        <div class="mini"><div class="mrow"><i class="th"></i><div><b>Supplier name</b><em>Florist · Stellenbosch</em></div></div><div class="mrow dim"><i class="th"></i><div><b></b><em></em></div></div></div>
+        <p class="what">Appears in the search results for its category and area.</p>
+        <ul><li>Category listing</li><li>Standard profile</li><li>Enquiry button</li><li>Listing in the printed guide</li></ul>
+      </div>
+      <div class="lv">
+        <div class="lvh"><span class="lvn">2</span><div><h4>Be seen first</h4><span class="pk">Growth · R9,500</span></div></div>
+        <div class="mini"><div class="mrow top"><i class="th"></i><div><b>Supplier name</b><em>Florist · Stellenbosch</em></div><span class="tagf">Featured</span></div><div class="strip"><i></i><i></i><i></i><i></i></div><div class="mrow dim"><i class="th"></i><div><b></b><em></em></div></div></div>
+        <p class="what">Pinned above standard listings in its category for the issue, with a photo gallery.</p>
+        <ul><li>Featured pin and tag</li><li>Photo gallery</li><li>One social mention</li><li>Small ad in the guide</li></ul>
+      </div>
+      <div class="lv">
+        <div class="lvh"><span class="lvn">3</span><div><h4>Be showcased</h4><span class="pk">Enhanced · R16,500</span></div></div>
+        <div class="mini"><div class="card"><div class="img"></div><span class="lab">Supplier showcase</span><b class="hl"></b><b class="hl s"></b></div></div>
+        <p class="what">A labelled article that tells the supplier's story, linked from its profile.</p>
+        <ul><li>Supplier showcase</li><li>Display on wedding pages</li><li>Social post and story</li><li>Quarter page in the guide</li></ul>
+      </div>
+      <div class="lv">
+        <div class="lvh"><span class="lvn">4</span><div><h4>Be the story</h4><span class="pk">Premium · R25,000</span></div></div>
+        <div class="mini"><div class="card big"><div class="img"></div><span class="lab">Sponsored feature · print and digital</span><b class="hl"></b><b class="hl"></b><b class="hl s"></b></div></div>
+        <p class="what">A sponsored feature in print and online, with priority placement across the directory.</p>
+        <ul><li>Sponsored feature</li><li>Display across titles</li><li>Amplified social</li><li>Half page in the guide</li></ul>
+      </div>
+      <div class="lv gold">
+        <div class="lvh"><span class="lvn">5</span><div><h4>Own a moment</h4><span class="pk">Partnership · R30,000</span></div></div>
+        <div class="mini"><div class="pres"><svg width="30" height="18"><use href="#rings"/></svg><span>Florists, presented by</span><b>Partner name</b></div><div class="mrow dim"><i class="th"></i><div><b></b><em></em></div></div></div>
+        <p class="what">Presents a category, a guide or the Couple of the Year prize.</p>
+        <ul><li>Category or prize partner</li><li>Branded guide</li><li>Campaign across social</li><li>Full page or supplement</li></ul>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px">Example screens with placeholder suppliers. Package contents are illustrative and will be finalised with Sales and Product.</p>
+    <div class="authority">
+      <div><h5>Editorial gives it authority</h5><p>Content creates the audience and the trust that a bare listing site lacks.</p></div>
+      <div><h5>The directory gives it continuity</h5><p>Suppliers keep a presence and a relationship with us all year, not only when a campaign runs.</p></div>
+      <div><h5>Neither works alone</h5><p>A directory without editorial is just another directory. Editorial without a directory leaves money on the table.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPETITION ================= -->
+<section class="sec bg-maroon" id="competition" data-ch="6">
+  <svg class="sprig" style="right:-30px;top:-20px;width:clamp(160px,18vw,260px);height:auto;aspect-ratio:240/420;transform:rotate(190deg);color:#E3C68E;opacity:.35"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The audience engine</b> · a user-generated competition</span>
+      <h2>Couple of the Year. <em>The 2028 Brides.</em></h2>
+      <p class="lede">Couples marrying in 2028 enter with their engagement story. The competition builds an audience of brides-to-be who want to buy the magazine, and gives us real stories to publish.</p>
+    </div>
+
+    <div class="cy4" id="cy4">
+      <div class="cyp">
+        <div class="cyn"><span>1</span>Enter</div>
+        <div class="vis phone">
+          <div class="ph-top"><i></i><b>capetimessa</b></div>
+          <div class="ph-img"><svg width="54" height="32"><use href="#rings"/></svg><span>Couple of the Year</span><b>Marrying in 2028? Tell us how you got engaged.</b></div>
+          <div class="cm"><b>@2028_bride_a</b> He asked at sunrise on Lion's Head…</div>
+          <div class="cm"><b>@2028_bride_b</b> At my gran's 80th, in front of everyone…</div>
+          <div class="cm"><b>@2028_bride_c</b> Over Sunday coffee, with the dog…</div>
+        </div>
+        <p>The anchor title posts on social. Couples enter by commenting with their engagement story.</p>
+      </div>
+      <div class="cyp">
+        <div class="cyn"><span>2</span>Shortlist</div>
+        <div class="vis dots" id="cydots"></div>
+        <p>We choose the top 10 comments and stories, and publish them online.</p>
+      </div>
+      <div class="cyp">
+        <div class="cyn"><span>3</span>Vote</div>
+        <div class="vis poll">
+          <span class="plq">Who should be Couple of the Year?</span>
+          <div class="pl"><span>Finalist 3</span><i style="--w:44%"></i><em>44%</em></div>
+          <div class="pl"><span>Finalist 7</span><i style="--w:27%"></i><em>27%</em></div>
+          <div class="pl"><span>Finalist 1</span><i style="--w:18%"></i><em>18%</em></div>
+          <div class="pl"><span>Finalist 9</span><i style="--w:11%"></i><em>11%</em></div>
+        </div>
+        <p>An Instagram vote selects the winner. Every finalist rallies friends and family to vote.</p>
+      </div>
+      <div class="cyp">
+        <div class="cyn"><span>4</span>Win</div>
+        <div class="vis mcover">
+          <span class="cv-m">The Wedding Collective</span>
+          <span class="cv-i">Issue 01 · Western Cape</span>
+          <svg width="70" height="42"><use href="#rings"/></svg>
+          <b>Couple of the Year</b>
+          <span class="cv-p">Prize: XXXXXX</span>
+        </div>
+        <p>The winning couple wins <b class="gold">XXXXXX</b> and appears in the first issue of the magazine. The prize is still to be confirmed.</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:12px">Illustrative screens with placeholder handles and vote shares.</p>
+
+    <div class="tomag2">
+      <span class="eyebrow"><b>From comment to magazine</b></span>
+      <div class="tmflow2"><span>Engagement story</span><span>Friends and family vote</span><span>New followers</span><span>Top 10 stories online</span><span>Winner in Issue 1</span><span class="on">Magazine sales</span></div>
+    </div>
+
+    <div class="recs2">
+      <span class="eyebrow"><b>Strategy recommendations</b> · for discussion</span>
+      <div class="recgrid2">
+        <div><h5>Take entries where the audience is</h5><p>Cape Times has 872 Instagram followers and 97,838 on Facebook. Daily News has 4,340 and 190,834.<a class="cite" href="#src-18">18</a> Take entries on Facebook as well, and boost the Instagram vote.</p></div>
+        <div><h5>Borrow Glamour's Instagram</h5><p>Glamour readers are 84% women and 36% aged 25–34.<a class="cite" href="#src-19">19</a> A joint post puts the vote in front of the right audience.</p></div>
+        <div><h5>Capture who they are</h5><p>A comment gives us no way to reach the person again. Add a "Join the 2028 Brides list" sign-up with a budget question and a magazine pre-order.</p></div>
+        <div><h5>Let partners fund the prize</h5><p>Sell the prize to a venue, a photographer and a jeweller as Partnership placements.</p></div>
+        <div><h5>Rules and consent</h5><p>Publish competition terms, and get POPIA consent to feature stories and keep entrants' details.</p></div>
+        <div><h5>What we measure</h5><p>Entries, story reads, votes, follower growth, sign-ups, and magazine sales to the list.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLISHING MODEL ================= -->
+<section class="sec bg-ivory" id="publishing" data-ch="6">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The publishing model</b></span>
+      <h2>Commerce funds it.<br><em>Credibility makes it work.</em></h2>
+      <p class="lede">Editorial authority, supplier discovery, commercial participation and audience distribution work together. Editorial must not become advertising. The platform's credibility is an asset to protect.</p>
+    </div>
+    <div class="lanes">
+      <div class="lane"><span class="who">Led by editorial</span><h4>Editorial authority</h4><ul><li>Inspiration and planning advice</li><li>Regional guides and trends</li><li>Venue features and real weddings</li><li>Supplier selection on merit</li></ul></div>
+      <div class="wall"><span>Clearly separated</span></div>
+      <div class="lane c"><span class="who">Led by commercial</span><h4>Commercial participation</h4><ul><li>Directory listings and upgrades</li><li>Sponsored and partnered content</li><li>Branded guides and showcases</li><li>Display, social and print</li></ul></div>
+      <div class="base"><b>Shared audience distribution</b><span>Digital · Social · Print · Regional titles</span></div>
+    </div>
+    <div class="rules">
+      <div><h5>Label everything paid</h5><p>Sponsored, partnered and featured content is always marked.</p></div>
+      <div><h5>Editorial picks are not for sale</h5><p>Payment buys visibility, never an editorial recommendation.</p></div>
+      <div><h5>Open ordering rules</h5><p>Paid placement in the directory is labelled and separate from standard listings.</p></div>
+      <div><h5>A quality bar to list</h5><p>Basic criteria for suppliers protect the couple's experience.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<div class="chap c-navy" id="ch-packages"><span class="cn">VII</span><span class="cq">How does it make money?</span><span class="cs">Packages · Ladder · Under-R50k weddings · Journey · Sales · Revenue</span></div>
+<section class="sec bg-champagne" id="packages" data-ch="7">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The commercial entry point</b></span>
+      <h2>Five ways in,<br><em>priced for the whole market.</em></h2>
+      <p class="lede">Wedding businesses have very different budgets. All five packages sit below R50,000, well under a traditional media campaign. Select a package to see what it includes.</p>
+      <div><span class="tag-ill">Illustrative package levels · not a final rate card</span></div>
+    </div>
+    <div class="tiers" id="tiers"></div>
+    <div class="tierp" id="tierp" aria-live="polite"></div>
+    <p class="small" style="margin-top:14px">Example inclusions for discussion. Final contents and rates to be set with Sales and Product during pilot planning.</p>
+  </div>
+</section>
+
+<!-- ================= LADDER ================= -->
+<section class="sec bg-ivory h-sans" id="ladder" data-ch="7">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The commercial ladder</b></span>
+      <h2>Enter small.<br><em>Grow with the platform.</em></h2>
+    </div>
+    <div class="ladder" id="ladderEl">
+      <div class="rung"><h4>Small supplier</h4><p>Entry-level presence: listed, findable, part of the network.</p><span class="t">Entry</span></div>
+      <div class="rung"><h4>Growing business</h4><p>Better discovery and visibility inside its category.</p><span class="t">Growth · Enhanced</span></div>
+      <div class="rung"><h4>Established regional brand</h4><p>Content, digital, social and print working together.</p><span class="t">Premium</span></div>
+      <div class="rung"><h4>Larger partner</h4><p>An integrated regional campaign across the ecosystem.</p><span class="t">Partnership</span></div>
+    </div>
+    <div class="formula"><span>Many accessible entry points</span><span class="op">+</span><span>fewer high-value partnerships</span><span class="op">=</span><b>a resilient model</b></div>
+    <p class="small" style="margin-top:14px">The strategy does not depend on selling one large sponsorship.</p>
+  </div>
+</section>
+
+<!-- ================= UNDER R50K WEDDINGS ================= -->
+<section class="sec bg-navy" id="under50" data-ch="7">
+  <svg class="sprig" style="right:-40px;bottom:-80px;width:clamp(180px,20vw,300px);height:auto;aspect-ratio:240/420;transform:rotate(12deg);color:#E3C68E;opacity:.28"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The under-R50k wedding</b> · an opportunity to amplify</span>
+      <h2>The wedding most wedding media <em>isn't written for.</em></h2>
+      <p class="lede">Wedding guides price a typical wedding at R150,000 to R350,000. Most of our anchor-title readers earn under R30,000 a month. Couples planning a wedding for under R50,000 get little attention from wedding media. The small suppliers who serve them are exactly who our entry packages are built for.</p>
+    </div>
+
+    <div class="wscale">
+      <div class="ws-track">
+        <div class="ws-band us" style="left:0;width:12.5%"><b>Under R50k</b><span>our opportunity</span></div>
+        <div class="ws-band" style="left:20%;width:17.5%"><b>R80k–R150k</b><span>"modest", 50–80 guests</span></div>
+        <div class="ws-band" style="left:37.5%;width:50%"><b>R150k–R350k</b><span>a "typical" 100-guest wedding</span></div>
+        <div class="ws-band lux" style="left:87.5%;width:12.5%"><b>R350k+</b><span>large and luxury</span></div>
+      </div>
+      <div class="ws-axis"><span style="left:0">R0</span><span style="left:12.5%">R50k</span><span style="left:25%">R100k</span><span style="left:50%">R200k</span><span style="left:75%">R300k</span><span style="left:100%">R400k</span></div>
+      <div class="ws-brackets">
+        <div class="br us" style="left:0;width:12.5%">Where many of our readers are</div>
+        <div class="br" style="left:37.5%;width:62.5%">Where wedding media mostly looks</div>
+      </div>
+      <p class="small">Price bands from The Wedding Directory's 2026 cost guide.<a class="cite" href="#src-20">20</a> Under-R50k is Strategy's framing, to be sized in the pilot.</p>
+    </div>
+
+    <div class="wfacts">
+      <div><b class="num">59%</b><p>of Cape Times readers earn under R30,000 a month.<a class="cite" href="#src-17">17</a></p></div>
+      <div><b class="num">65%</b><p>of Daily News readers earn under R30,000 a month.<a class="cite" href="#src-17">17</a></p></div>
+      <div><b class="num">&lt;R60k</b><p>A real 50-guest wedding: R10,000 venue, décor under R3,000, flowers R1,200.<a class="cite" href="#src-21">21</a></p></div>
+      <div><b class="num">R25–50k</b><p>Typical lobola, which many couples pay on top of the wedding itself.<a class="cite" href="#src-22">22</a></p></div>
+    </div>
+
+    <div class="wopp">
+      <div><span class="k">Content</span><h4>Beautiful for less</h4><p>Real under-R50k weddings with the costs shown: halls and gardens, family catering, décor hire, DIY. It runs as a section in every issue and as an always-on digital series.</p></div>
+      <div><span class="k">Suppliers</span><h4>The same price point on both sides</h4><p>Home caterers, hall and décor hire, independent photographers and dressmakers serve these weddings. They are the Entry and Growth advertisers.</p></div>
+      <div><span class="k">Sponsors</span><h4>Brands that help couples stretch a budget</h4><p>Grocery, retail, furniture and banking brands. Volt already works with retailers such as Pick n Pay, Checkers and Food Lover's.<a class="cite" href="#src-23">23</a></p></div>
+    </div>
+
+    <div class="wmsg">
+      <p>Not every wedding costs R250,000.</p>
+      <p><em>Every wedding needs suppliers.</em></p>
+    </div>
+    <p class="wtest"><b>What the pilot tests:</b> a budget question on the 2028 Brides sign-up gives us the first real data on how many couples in our audience plan below R50,000.</p>
+  </div>
+</section>
+
+<!-- ================= COMMERCIAL JOURNEY ================= -->
+<section class="sec bg-blush" id="cjourney" data-ch="7">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The commercial journey</b></span>
+      <h2>A relationship,<br><em>not a transaction.</em></h2>
+      <p class="lede">Weddings run in seasons and issues. The journey loops back, so a supplier we retain becomes next season's engaged advertiser.</p>
+    </div>
+    <div class="loop"><svg id="loopsvg" viewBox="0 0 1000 250"></svg></div>
+    <div class="loopsteps">
+      <div><b>Discover</b>The supplier discovers the opportunity.</div>
+      <div><b>List</b>It joins the platform.</div>
+      <div><b>Engage</b>It adds visibility and content.</div>
+      <div><b>Lead</b>It receives enquiries and commercial value.</div>
+      <div><b>Partner</b>It invests in larger campaigns.</div>
+      <div><b>Retain</b>It returns for the next season or issue.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SALES ================= -->
+<section class="sec bg-mist h-sans" id="sales" data-ch="7">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The sales opportunity</b></span>
+      <h2>Something tangible<br><em>for every client type.</em></h2>
+    </div>
+    <div class="sell3">
+      <div class="cell"><span class="e">Entry · Growth</span><h4>Local and SME</h4><p>Accessible regional packages. Easy to explain and quick to close.</p></div>
+      <div class="cell"><span class="e">Enhanced → Partnership</span><h4>Regional brands</h4><p>Integrated regional campaigns across content, digital, social and print.</p></div>
+      <div class="cell"><span class="e">Multi-region</span><h4>National brands</h4><p>Several regional editions bought together as editions go live.</p></div>
+    </div>
+    <div class="sellax"><span>Local</span><i></i><span>National</span></div>
+    <p class="small" style="margin-top:14px">Sold directly by Volt's own sales pods. This is not an agency proposition.</p>
+  </div>
+</section>
+
+<!-- ================= REVENUE ================= -->
+<section class="sec bg-champagne" id="revenue" data-ch="7">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Illustrative commercial model</b></span>
+      <h2>How the revenue<br><em>could build.</em></h2>
+      <div><span class="tag-ill">Illustrative · not forecast revenue</span></div>
+    </div>
+    <div class="rev">
+      <div class="revchart" id="revchart">
+        <div class="rbar" data-v="297500"><div class="v">R297,500</div><div class="blk"></div><span class="l">Opportunity 1</span></div>
+        <div class="rbar" data-v="441000"><div class="v">R441,000</div><div class="blk"></div><span class="l">Opportunity 2</span></div>
+        <div class="rbar" data-v="533000"><div class="v">R533,000</div><div class="blk"></div><span class="l">Opportunity 3</span></div>
+        <div class="rbar tot" data-v="1271500"><div class="v" id="revtot">R1,271,500</div><div class="blk"><div class="seg s3" data-v="533000"></div><div class="seg s2" data-v="441000"></div><div class="seg s1" data-v="297500"></div></div><span class="l">Three-issue total</span></div>
+      </div>
+      <div class="revside">
+        <span class="eyebrow">Three-issue illustrative total</span>
+        <div class="total" id="revbig">R1,271,500</div>
+        <div class="ill">Illustrative. Not a forecast.</div>
+        <p>This model shows the mechanics: a mix of accessible packages and a smaller number of larger partnerships, sold issue by issue as the supplier base grows. It is not a revenue commitment.</p>
+        <button class="replay" id="replay" type="button">Replay the build</button>
+      </div>
+    </div>
+    <div class="revnotes">
+      <div><b>Opportunity 1 → 2</b>+48%. The model assumes the supplier base and package mix grow between issues.</div>
+      <div><b>Opportunity 2 → 3</b>+21%. Growth at this stage would need to come from upgrades and repeat buyers.</div>
+      <div><b>What the pilot tests</b>Whether real sell-through supports this shape. The model is revised using actual pilot results.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILOT ================= -->
+<div class="chap c-gold" id="ch-pilot"><span class="cn">VIII</span><span class="cq">Can it scale?</span><span class="cs">Pilot · Scale model · Flywheel · Measurement · Risks</span></div>
+<section class="sec bg-navy" id="pilot" data-ch="8">
+  <svg class="sprig" style="left:-60px;top:-40px;width:clamp(160px,18vw,260px);height:auto;aspect-ratio:240/420;transform:rotate(-160deg)"><use href="#sprig"/></svg>
+  <div class="inner">
+    <div class="pilot-hero">
+      <div class="head" style="margin:0">
+        <span class="eyebrow"><b>The Wedding Collective · Western Cape pilot</b></span>
+        <h2>The first test market.<br><em>Not the whole strategy.</em></h2>
+        <p class="lede">The Western Cape proves the model. What works here becomes the blueprint for every later edition.</p>
+      </div>
+      <div class="why-wc">
+        <div><span class="big num">23%</span><p>of South Africa's registered civil marriages in 2024 (22,382), second only to Gauteng.<a class="cite" href="#src-1">1</a></p></div>
+        <div><span class="big num">Active</span><p>regional wedding calendar, including the Winter Wedding Expo at Kirstenbosch, the Winelands Bridal Fair in Stellenbosch and the FAB Bridal Expo in Durbanville.<a class="cite" href="#src-14">14</a><a class="cite" href="#src-15">15</a></p></div>
+        <div><span class="big num">In place</span><p>Volt already sells regional print and digital here, so the pilot runs on existing infrastructure.</p></div>
+      </div>
+    </div>
+    <div class="proves">
+      <div><h5>Audience demand</h5><p>Do couples use it and come back?</p></div>
+      <div><h5>Supplier demand</h5><p>Do businesses list, and in which categories?</p></div>
+      <div><h5>Commercial willingness</h5><p>Do they pay, and at which tier?</p></div>
+      <div><h5>Product-market fit</h5><p>Does the combination beat buying channels separately?</p></div>
+      <div><h5>Package structure</h5><p>Which inclusions sell, and which don't?</p></div>
+      <div><h5>Discovery behaviour</h5><p>How do couples search, browse and enquire?</p></div>
+      <div><h5>Content performance</h5><p>Which editorial formats hold attention?</p></div>
+      <div><h5>Sales adoption</h5><p>Can the sales pods sell it easily?</p></div>
+      <div><h5>Revenue potential</h5><p>Does real sell-through support the illustrative model?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCALE MODEL ================= -->
+<section class="sec bg-ivory h-sans" id="scale" data-ch="8">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The scale model</b></span>
+      <h2>Pilot. Prove.<br><em>Refine. Replicate.</em></h2>
+    </div>
+    <div class="ppr">
+      <div><div class="k">Western Cape</div><div class="w">Pilot</div><ul><li>Launch the first edition</li><li>Seed suppliers and content</li></ul></div>
+      <div><div class="k">Test</div><div class="w">Prove</div><ul><li>Audience</li><li>Suppliers</li><li>Sales</li><li>Packages</li><li>Revenue</li></ul></div>
+      <div><div class="k">Improve the model</div><div class="w">Refine</div><ul><li>Fix what underperforms</li><li>Create the regional playbook</li><li>Standardise what works</li></ul></div>
+      <div><div class="k">New editions</div><div class="w">Replicate</div><ul><li>KwaZulu-Natal</li><li>Gauteng</li><li>Eastern Cape</li><li>Other regions</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLYWHEEL ================= -->
+<section class="sec bg-mist" id="flywheel" data-ch="8">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>The flywheel</b></span>
+      <h2>Each turn makes<br><em>the next one easier.</em></h2>
+    </div>
+    <div class="fly">
+      <svg id="flysvg" viewBox="0 0 600 600" role="group" aria-label="The Wedding Collective flywheel"></svg>
+      <div>
+        <div class="fpanel" id="fpanel" aria-live="polite"></div>
+        <div class="fctl"><button type="button" id="fprev">Previous</button><button type="button" id="fplay">Pause</button><button type="button" id="fnext">Next</button></div>
+      </div>
+    </div>
+    <div class="expand">
+      <div><svg viewBox="0 0 220 120"><circle cx="110" cy="60" r="14" fill="#14284F"/></svg><h4>Western Cape</h4><p>One edition proves the flywheel turns.</p></div>
+      <div><svg viewBox="0 0 220 120"><circle cx="110" cy="60" r="14" fill="#14284F"/><circle cx="110" cy="60" r="34" fill="none" stroke="#9CA2AB" stroke-dasharray="2 4"/><circle cx="144" cy="60" r="5" fill="none" stroke="#14284F"/><circle cx="84" cy="36" r="5" fill="none" stroke="#14284F"/><circle cx="90" cy="88" r="5" fill="none" stroke="#14284F"/></svg><h4>Regional playbook</h4><p>What worked, written down and repeatable.</p></div>
+      <div><svg viewBox="0 0 220 120"><circle cx="110" cy="60" r="14" fill="#14284F"/><circle cx="110" cy="60" r="34" fill="none" stroke="#C3C8CF"/><circle cx="110" cy="60" r="56" fill="none" stroke="#9CA2AB" stroke-dasharray="2 4"/><circle cx="144" cy="60" r="6" fill="#14284F"/><circle cx="84" cy="36" r="6" fill="#14284F"/><circle cx="90" cy="88" r="6" fill="#14284F"/><circle cx="160" cy="28" r="4" fill="none" stroke="#14284F"/><circle cx="58" cy="78" r="4" fill="none" stroke="#14284F"/><circle cx="150" cy="100" r="4" fill="none" stroke="#14284F"/></svg><h4>National network</h4><p>Regional editions sold one by one or as a network.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEASUREMENT ================= -->
+<section class="sec bg-ivory h-sans" id="measure" data-ch="8">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Measurement</b></span>
+      <h2>Five questions<br><em>the pilot must answer.</em></h2>
+    </div>
+    <div class="meas">
+      <div><h4>Audience</h4><p class="q">Are people using it?</p><ul><li>Reach</li><li>Engagement</li><li>Return usage</li></ul></div>
+      <div><h4>Supply</h4><p class="q">Are suppliers joining?</p><ul><li>Number of suppliers</li><li>Listings</li><li>Category coverage</li></ul></div>
+      <div><h4>Commercial</h4><p class="q">Are they paying?</p><ul><li>Revenue</li><li>Package sales by tier</li><li>Repeat business</li></ul></div>
+      <div><h4>Performance</h4><p class="q">Is it working for them?</p><ul><li>Content engagement</li><li>Campaign performance</li><li>Enquiries, where measurable</li></ul></div>
+      <div><h4>Scale</h4><p class="q">Can it travel?</p><ul><li>Playbook readiness</li><li>Regional adoption</li></ul></div>
+    </div>
+    <div class="approach"><span><b>Baseline first.</b> The first issue sets the baseline.</span><span><b>Then targets.</b> Targets are set from pilot data, not assumed now.</span><span><b>Then a decision.</b> The results go into the recommendation on scaling.</span></div>
+  </div>
+</section>
+
+<!-- ================= RISKS ================= -->
+<section class="sec bg-blush" id="risks" data-ch="8">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Risks · what needs to be solved</b></span>
+      <h2>What could<br><em>go wrong.</em></h2>
+      <p class="lede">Strategy's view of the execution challenge, and how the pilot is designed to deal with it.</p>
+    </div>
+    <div class="risks">
+      <div class="risk h"><span>Challenge</span><span>Why it matters</span><span>How we address it</span></div>
+      <div class="risk"><h5>Building the initial supplier base</h5><p>An empty directory gives couples no reason to visit.</p><p class="m">Seed with editorial features and a founding-supplier offer, focused on priority categories.</p></div>
+      <div class="risk"><h5>Regional density</h5><p>Thin coverage in any category weakens discovery.</p><p class="m">Start in a tight geography (Cape Town and the Winelands) before covering the whole province.</p></div>
+      <div class="risk"><h5>Maintaining quality</h5><p>Low-quality listings damage the premium position.</p><p class="m">Set basic listing criteria, with editorial curation for anything featured.</p></div>
+      <div class="risk"><h5>Becoming "just another directory"</h5><p>Without editorial, we lose the distinction.</p><p class="m">Editorial leads every edition. The directory is one layer of the product, not the product.</p></div>
+      <div class="risk"><h5>Sales adoption</h5><p>A complex product will not get sold.</p><p class="m">Five simple packages, a sales kit, and incentives aligned with the pilot.</p></div>
+      <div class="risk"><h5>Editorial and commercial alignment</h5><p>Blurred lines erode trust.</p><p class="m">Labelling rules and editor sign-off, agreed before launch.</p></div>
+      <div class="risk"><h5>Development requirements</h5><p>A full directory build could delay the pilot.</p><p class="m">Scope a minimum directory for the pilot and confirm the build route with Product and Tech.</p></div>
+      <div class="risk"><h5>Supplier retention</h5><p>One-off buyers do not build a platform.</p><p class="m">Report performance each season and offer renewals around the wedding calendar.</p></div>
+      <div class="risk"><h5>A premium consumer experience</h5><p>Ad clutter would undercut the brand.</p><p class="m">Set ad-density limits and design standards for the wedding environment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASK ================= -->
+<div class="chap c-maroon" id="ch-ask"><span class="cn">IX</span><span class="cq">What are we asking for?</span><span class="cs">The strategic ask</span></div>
+<section class="sec ask bg-navy" id="ask" data-ch="9">
+  <div class="inner">
+    <div class="head"><span class="eyebrow"><b>The strategic ask</b></span></div>
+    <div class="askgrid">
+      <div>
+        <p class="notask">Approve a national wedding business.</p>
+        <p class="yesask">Approve the Western Cape pilot.</p>
+        <div class="bts" id="bts"><span>Build</span><span>Test</span><span>Measure</span><span>Refine</span><span>Scale</span></div>
+        <p class="proveline">The pilot proves <b>audience demand</b>, <b>supplier demand</b>, <b>commercial viability</b>, <b>package structure</b> and the <b>operating model</b> before any regional expansion is considered.</p>
+      </div>
+      <div class="approve">
+        <div><span class="ck"></span><div><h5>A pilot mandate</h5><p>The Wedding Collective, Western Cape edition, run across three issues or package opportunities.</p></div></div>
+        <div><span class="ck"></span><div><h5>A cross-functional pilot team</h5><p>Strategy, Editorial, Sales and Product, with one accountable owner.</p></div></div>
+        <div><span class="ck"></span><div><h5>A scoped minimum directory</h5><p>Build route and resourcing to be tabled with the pilot plan.</p></div></div>
+        <div><span class="ck"></span><div><h5>A decision gate</h5><p>Results against the five measures, plus a recommendation on the next region.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINALE ================= -->
+<section class="sec finale bg-ivory" id="finale" data-ch="9">
+  <svg class="sprig" style="right:4%;top:50%;transform:translateY(-50%) rotate(8deg);width:clamp(180px,24vw,360px);height:auto;aspect-ratio:240/420;opacity:.7"><use href="#sprig"/></svg>
+  <div class="inner">
+    <h2><span class="the">The</span>Wedding Collective</h2>
+    <div class="lines">
+      <div>One platform.</div>
+      <div>Multiple regions.</div>
+      <div>Thousands of businesses.</div>
+      <div>One scalable commercial ecosystem.</div>
+    </div>
+    <div class="closer"><span>Western Cape is the pilot.</span><span>The opportunity is regional.</span></div>
+  </div>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section class="sec sources bg-champagne" id="sources" data-ch="9">
+  <div class="inner">
+    <span class="eyebrow"><b>Sources</b> · Accessed September 2026. Competitor descriptions reflect each business's own public statements.</span>
+    <ol>
+      <li id="src-1">Stats SA, Marriages and Divorces 2024 (P0307), summarised by STBB, April 2026. <a href="https://stbb.co.za/wp-content/uploads/2026/04/STBB_Pulse_April2026_s1_Statistical_Release-P0307_Marriages-and-Divorces_2024.pdf" target="_blank" rel="noopener">stbb.co.za</a></li>
+      <li id="src-2">Stats SA, "The rise of late marriages" (Marriages and Divorces 2023). <a href="https://www.statssa.gov.za/?p=18313" target="_blank" rel="noopener">statssa.gov.za</a></li>
+      <li id="src-3">The Wedding Directory. <a href="https://www.theweddingdirectory.co.za/" target="_blank" rel="noopener">theweddingdirectory.co.za</a></li>
+      <li id="src-4">Happly. <a href="http://www.happly.co.za/" target="_blank" rel="noopener">happly.co.za</a></li>
+      <li id="src-5">Pink Book Weddings. <a href="https://pink-book.co.za/" target="_blank" rel="noopener">pink-book.co.za</a></li>
+      <li id="src-6">Wedding &amp; Function, suppliers directory. <a href="https://weddingandfunction.co.za/suppliers-directory/" target="_blank" rel="noopener">weddingandfunction.co.za</a></li>
+      <li id="src-7">SA-Venues, Weddings. <a href="https://www.sa-venues.com/weddings/default.htm" target="_blank" rel="noopener">sa-venues.com</a></li>
+      <li id="src-8">Where's my Wedding, venue index. <a href="https://www.wheresmywedding.co.za/venues/index" target="_blank" rel="noopener">wheresmywedding.co.za</a></li>
+      <li id="src-9">Wedding Collection Magazine, About. <a href="https://www.wedding-collection.com/about/" target="_blank" rel="noopener">wedding-collection.com</a></li>
+      <li id="src-10">Real Brides Magazine, About. <a href="https://www.realbridesmagazine.co.za/about" target="_blank" rel="noopener">realbridesmagazine.co.za</a></li>
+      <li id="src-11">Confetti Daydreams, About. <a href="https://confettidaydreams.com/about/" target="_blank" rel="noopener">confettidaydreams.com</a></li>
+      <li id="src-12">Marriage Meander. <a href="https://marriagemeander.co.za/" target="_blank" rel="noopener">marriagemeander.co.za</a></li>
+      <li id="src-13">Top Wedding Suppliers. <a href="https://www.topweddingsuppliers.co.za/" target="_blank" rel="noopener">topweddingsuppliers.co.za</a></li>
+      <li id="src-14">Wedding Etc, bridal expos across South Africa. <a href="https://www.weddingetc.co.za/bridal-expos-wedding-across-south-africa/" target="_blank" rel="noopener">weddingetc.co.za</a></li>
+      <li id="src-15">SA-Venues events, FAB Bridal Expo, Durbanville. <a href="https://www.sa-venues.com/events/westerncape/autumn-fab-bridal-expo/" target="_blank" rel="noopener">sa-venues.com</a></li>
+      <li id="src-16">Feedspot, South Africa wedding blogs (Pink Book listed as Cape Town-based). <a href="https://bloggers.feedspot.com/south_africa_wedding_blogs/" target="_blank" rel="noopener">feedspot.com</a></li>
+      <li id="src-17">National Media Group, Readership Data media kit (Brand Mapp 2025), data sheet dated 7 September 2026 (internal).</li>
+      <li id="src-18">Volt Africa Social Media Inventory, follower counts by title, April 2026 (internal).</li>
+      <li id="src-19">Brand Mapp 2024/5, newspapers and Condé Nast titles read (internal extract).</li>
+      <li id="src-20">The Wedding Directory, "Average cost of a wedding in South Africa (2026 budget breakdown)". <a href="https://theweddingdirectory.co.za/wedding-blog/average-cost-of-a-wedding-in-south-africa" target="_blank" rel="noopener">theweddingdirectory.co.za</a></li>
+      <li id="src-21">Sanlam Reality, "Couples share their wedding budget breakdown". <a href="https://www.sanlamreality.co.za/couple-share-wedding-budget+" target="_blank" rel="noopener">sanlamreality.co.za</a></li>
+      <li id="src-22">Africa Global Forum, "The price of 'I do': what African weddings cost relative to income (2026)". <a href="https://africaglobalforum.com/reports/african-weddings-cost-vs-income-2026/" target="_blank" rel="noopener">africaglobalforum.com</a></li>
+      <li id="src-23">Volt.Africa Business Intelligence 2024/2025 deck, top clients (internal).</li>
+    </ol>
+  </div>
+</section>
+<div class="foot"><span>The Wedding Collective · Executive proposal</span><span>Volt.Africa Strategy · September 2026 · Confidential</span></div>
+</main>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const NS='http://www.w3.org/2000/svg';
+const el=(tag,attrs={},parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;};
+const RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt=n=>'R'+Math.round(n).toLocaleString('en-US');
+
+/* ---------------- chapters ---------------- */
+const CH=[['I','What is it?','cover'],['II','Why the market needs it','market'],['III','Who already exists','landscape'],['IV','Where the opportunity is','open'],['V','Why Volt','why-volt'],['VI','How it works','ecosystem'],['VII','How it makes money','packages'],['VIII','Can it scale?','pilot'],['IX','The ask','ask']];
+const rl=$('#railList'), sl=$('#sheetList');
+CH.forEach((c,i)=>{
+  const li=document.createElement('li');
+  li.innerHTML=`<a class="ch" href="#${c[2]}" data-i="${i+1}"><span>${c[0]}</span><span>${c[1]}</span></a>`;
+  rl.appendChild(li);
+  const a=document.createElement('a');a.href='#'+c[2];a.innerHTML=`<i>${c[0]}</i>${c[1]}`;sl.appendChild(a);
+});
+const sheet=$('#sheet');
+$('#openSheet').onclick=()=>{sheet.hidden=false};
+$('#closeSheet').onclick=()=>{sheet.hidden=true};
+$$('#sheetList a').forEach(a=>a.addEventListener('click',()=>{sheet.hidden=true}));
+const setCh=n=>$$('.rail a.ch').forEach(a=>a.classList.toggle('on',a.dataset.i==n));
+setCh(1);
+const chObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setCh(e.target.dataset.ch)})},{rootMargin:'-45% 0px -50% 0px'});
+$$('section[data-ch]').forEach(s=>chObs.observe(s));
+
+/* progress stem + topbar */
+const stem=$('#stemFill'), tb=$('#topbar');
+const onScroll=()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  const p=h>0?Math.min(1,Math.max(0,scrollY/h)):0;
+  stem.setAttribute('stroke-dashoffset',String(1000-1000*p));
+  tb.classList.toggle('show',scrollY>innerHeight*.6);
+};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ---------------- reveal + triggers ---------------- */
+const inView=e=>{const r=e.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0};
+const rvEls=$$('.sec .inner > *');
+rvEls.forEach(e=>{e.classList.add('rv');if(!RM&&!inView(e))e.classList.add('await')});
+const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('await');rvObs.unobserve(e.target)}})},{threshold:.08});
+rvEls.forEach(e=>rvObs.observe(e));
+function onEnter(node,fn,th=.35){
+  if(!node)return;
+  const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){fn();o.disconnect()}})},{threshold:th});o.observe(node);
+}
+
+/* verbs */
+const verbs=$$('#verbs span');
+if(RM||inView($('#verbs')))verbs.forEach(v=>v.classList.add('lit'));
+else onEnter($('#verbs'),()=>verbs.forEach((v,i)=>setTimeout(()=>v.classList.add('lit'),i*260)),.5);
+
+/* count-ups */
+$$('[data-count]').forEach(n=>{
+  if(RM||inView(n))return;
+  const t=+n.dataset.count;
+  onEnter(n,()=>{const t0=performance.now();const step=now=>{const k=Math.min(1,(now-t0)/1400);const e=1-Math.pow(1-k,3);n.textContent=Math.round(t*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)},.6);
+});
+
+/* ---------------- regional map ---------------- */
+const P=(lon,lat)=>[30+(lon-16.3)*33*.88,30+(-22-lat)*33];
+const path=pts=>pts.map((p,i)=>{const q=P(p[0],p[1]);return (i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(' ')+'Z';
+const SA=[[16.45,-28.63],[17.4,-28.7],[18.2,-28.9],[19.0,-28.95],[19.9,-28.45],[20.0,-24.75],[20.6,-26.8],[21.7,-26.9],[22.6,-26.4],[23.4,-25.8],[25.2,-25.7],[25.9,-24.8],[26.5,-24.4],[26.9,-23.7],[27.5,-23.4],[28.2,-22.6],[29.0,-22.2],[29.9,-22.2],[31.3,-22.4],[31.5,-23.5],[31.9,-24.4],[31.95,-25.95],[32.1,-26.85],[32.9,-26.86],[32.6,-27.6],[32.4,-28.3],[32.1,-28.8],[31.4,-29.4],[31.05,-29.9],[30.4,-30.75],[29.9,-31.3],[29.2,-31.9],[28.5,-32.5],[27.9,-33.05],[26.9,-33.6],[25.7,-33.8],[25.6,-34.0],[24.8,-34.2],[23.4,-34.1],[22.1,-34.2],[21.0,-34.4],[20.0,-34.83],[19.3,-34.6],[18.8,-34.35],[18.47,-34.35],[18.4,-33.9],[18.0,-33.1],[18.3,-32.2],[17.9,-31.2],[17.3,-30.3],[16.8,-29.2]];
+const LS=[[27.0,-29.6],[27.5,-28.95],[28.2,-28.65],[29.0,-28.9],[29.45,-29.4],[29.2,-30.0],[28.5,-30.4],[27.7,-30.6],[27.1,-30.1]];
+const SZ=[[30.8,-26.4],[31.3,-25.75],[31.95,-25.95],[32.1,-26.8],[31.4,-27.3],[30.85,-26.9]];
+const map=$('#samap');
+el('path',{d:path(SA)+' '+path(LS)+' '+path(SZ),'fill-rule':'evenodd',fill:'#F3F1EC',stroke:'#C3C8CF','stroke-width':'1'},map);
+// botanical sprig inside the map corner
+const sp=el('use',{href:'#sprig',x:'470',y:'330',width:'110',height:'190',transform:'rotate(14 525 425)',style:'color:#C3C8CF;opacity:.6'},map);
+const ED=[
+  {id:'wc',name:'Western Cape',st:'Pilot · Edition one',lon:18.95,lat:-33.85,pilot:1,body:'The pilot and the blueprint. It tests audience, supplier and commercial demand anchored by the Cape Times, with IOL and Cape Community Media titles, sold through Volt\'s existing sales pods. The Western Cape accounted for 23.0% of registered civil marriages in 2024.'},
+  {id:'kzn',name:'KwaZulu-Natal',st:'Candidate edition',lon:30.95,lat:-29.8,body:'Durban and the coast, with the Daily News as the anchor title: 67% of its readers are women and 44% are aged 25–34. The market already has a regional specialist, Marriage Meander, which is a useful benchmark for a multi-format regional model.'},
+  {id:'gp',name:'Gauteng',st:'Candidate edition',lon:28.05,lat:-26.15,body:'The province with the most registered civil marriages, and a large base of brands. The Star is the anchor title. Likely the largest commercial opportunity once the model is proven.'},
+  {id:'ec',name:'Eastern Cape',st:'Candidate edition',lon:26.3,lat:-33.4,body:'Gqeberha, East London and the surrounding region, with its own supplier base and audience. There is no anchor title yet, because the current readership data has no Eastern Cape daily.'},
+  {id:'oth',name:'Other regions',st:'Future editions',lon:26.2,lat:-28.9,small:1,body:'Added using the regional playbook once the model is proven. The order of later editions will be set from pilot evidence.'}
+];
+const wc=P(ED[0].lon,ED[0].lat);
+const gl=el('g',{},map), gn=el('g',{},map);
+ED.slice(1).forEach(d=>{const q=P(d.lon,d.lat);const mx=(wc[0]+q[0])/2, my=Math.min(wc[1],q[1])-60;
+  el('path',{d:`M${wc[0]} ${wc[1]} Q ${mx} ${my} ${q[0]} ${q[1]}`,fill:'none',stroke:'#9CA2AB','stroke-width':'1','stroke-dasharray':'2 5'},gl);});
+[[30.97,-25.47],[29.45,-23.9],[25.6,-25.85],[24.76,-28.74]].forEach(c=>{const q=P(...c);el('circle',{cx:q[0],cy:q[1],r:3,fill:'none',stroke:'#9CA2AB'},gn)});
+ED.forEach(d=>{
+  const q=P(d.lon,d.lat);const g=el('g',{style:'cursor:pointer','data-id':d.id,tabindex:'0',role:'button','aria-label':d.name},gn);
+  if(d.pilot){
+    const pulse=el('circle',{cx:q[0],cy:q[1],r:18,fill:'none',stroke:'#14284F','stroke-width':'1'},g);
+    if(!RM){el('animate',{attributeName:'r',values:'16;40',dur:'3s',repeatCount:'indefinite'},pulse);el('animate',{attributeName:'opacity',values:'.8;0',dur:'3s',repeatCount:'indefinite'},pulse);}
+    el('circle',{cx:q[0],cy:q[1],r:34,fill:'#14284F','fill-opacity':'.08'},g);
+    el('circle',{cx:q[0],cy:q[1],r:7,fill:'#14284F'},g);
+  }else{
+    el('circle',{class:'halo',cx:q[0],cy:q[1],r:d.small?16:28,fill:'#14284F','fill-opacity':'0',stroke:'#C3C8CF'},g);
+    el('circle',{class:'core',cx:q[0],cy:q[1],r:d.small?3.5:5,fill:'#FBFAF7',stroke:'#14284F'},g);
+  }
+  const t=el('text',{x:q[0]+(d.id==='wc'?-8:12),y:q[1]+(d.id==='wc'?52:(d.id==='ec'?30:-12)),'text-anchor':d.id==='wc'?'middle':'start','font-family':'Newsreader, serif','font-size':d.pilot?'19':'15',fill:d.pilot?'#14284F':'#464D5B'},g);
+  t.textContent=d.name;
+  if(d.pilot){const s=el('text',{x:q[0]-8,y:q[1]+70,'text-anchor':'middle','font-family':'Hanken Grotesk, sans-serif','font-size':'10','letter-spacing':'2.4',fill:'#14284F','font-weight':'600'},g);s.textContent='PILOT';}
+  g.addEventListener('click',()=>selEd(d.id));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selEd(d.id)}});
+});
+const edl=$('#editions');
+ED.forEach(d=>{const b=document.createElement('button');b.type='button';b.className='ed'+(d.pilot?' pilot':'');b.dataset.id=d.id;
+  b.innerHTML=`<span><span class="tw">The Wedding Collective —</span><span class="n"><i>${d.name}</i></span></span><span class="st">${d.st}</span>`;b.onclick=()=>selEd(d.id);edl.appendChild(b);});
+function selEd(id){const d=ED.find(x=>x.id===id);
+  $$('.ed').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
+  $$('#samap g[data-id]').forEach(g=>{const on=g.dataset.id===id;const h=g.querySelector('.halo');if(h){h.setAttribute('fill-opacity',on?'.1':'0');h.setAttribute('stroke',on?'#14284F':'#C3C8CF')}});
+  $('#edpanel').innerHTML=`<span class="eyebrow"><b>${d.st}</b></span><h4>The Wedding Collective — ${d.name}</h4><p class="small" style="font-size:15px;color:#464D5B">${d.body}</p>`;}
+selEd('wc');
+
+/* ---------------- journey ---------------- */
+const J=[
+ ['Dream','Inspiration before any decisions','Couples and families collect ideas and picture the day. Most are not yet searching for suppliers.',['Editorial','Social'],'Trends, real weddings and inspiration across Volt titles and social.'],
+ ['Plan','Budgets, timelines, priorities','Couples set a budget, pick a date and season, and decide what matters most.',['Editorial','Print'],'Planning guides, checklists and the regional wedding guide in print.'],
+ ['Discover','Finding who is out there, locally','They look for venues and suppliers in their region and category.',['Discovery','Editorial'],'The regional directory, category pages and supplier stories.'],
+ ['Compare','Shortlisting and weighing up','They compare style, price, availability and reputation.',['Discovery','Commercial content'],'Supplier profiles, venue features and partnered showcases.'],
+ ['Book','Enquiries and commitments','They contact suppliers and confirm bookings.',['Discovery'],'Enquiry routes from profiles send leads to suppliers.'],
+ ['Buy','Products and services','They buy rings, attire, beauty, travel, finance and home products.',['Commercial content','Digital','Social'],'Sponsored features, display and social for product and service brands.'],
+ ['Celebrate','The day, and after','They share the wedding, and guests and families take part.',['Editorial','Social'],'Real-wedding features, guest content, honeymoon and new-home editorial.']];
+const jt=$('#jtrack');
+J.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='jstep';b.setAttribute('role','tab');b.innerHTML=`<span class="dot"></span><span class="lb">${s[0].toUpperCase()}</span>`;b.onclick=()=>selJ(i);jt.appendChild(b)});
+function selJ(i){const s=J[i];$$('.jstep').forEach((b,k)=>{b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i)});
+  $('#jpanel').innerHTML=`<div><h3><em>${String(i+1)} of 7 · ${s[1]}</em>${s[0]}</h3><p style="margin-top:14px;color:#464D5B">${s[2]}</p></div><div><span class="eyebrow">How The Wedding Collective takes part</span><p style="margin-top:12px;font-family:var(--display);font-size:clamp(20px,2vw,26px);line-height:1.3">${s[4]}</p><div class="chips">${s[3].map(c=>`<span class="chip n">${c}</span>`).join('')}</div></div>`;}
+selJ(0);
+
+/* ---------------- landscape + map ---------------- */
+const G=[
+ {g:'National directories and planning platforms',s:'Search, filters, listings and planning tools',c:'dir',p:[
+  {n:'The Wedding Directory',w:'National vendor directory across 12 categories, with reviews and budget, checklist and guest-list tools.',d:'Describes itself as "South Africa\'s Wedding Planning Platform". Supplier listing is free to start, with paid upgrades.',src:[3],x:88,y:20,lx:543,ly:376,a:'end'},
+  {n:'Happly',w:'Free planning suite for couples (website, invitations, RSVP, budget), plus enquiry and booking tools for suppliers.',d:'States 1,149 venues and 3,931 vendors. Also offers a gift registry and a retail shop.',src:[4],x:82,y:14,lx:509,ly:402,a:'end'},
+  {n:'Pink Book Weddings',w:'Vetted supplier directory covering all nine provinces, with a blog, real weddings and competitions.',d:'Founded 2008. Calls itself "South Africa\'s most trusted wedding supplier directory". Feedspot lists it as Cape Town-based.',src:[5,16],x:70,y:34,lx:462,ly:314,a:'start'},
+  {n:'Wedding & Function',w:'Supplier directory across 21+ categories, with online magazines and free planning tools.',d:'Positions its directory as "South Africa\'s premier wedding suppliers directory".',src:[6],x:78,y:42,lx:507,ly:279,a:'start'}]},
+ {g:'Venue discovery',s:'Venue-first search by province',c:'venue',p:[
+  {n:'SA-Venues Weddings',w:'Venue and honeymoon directory by province, with direct booking and no booking fees.',d:'Calls itself "South Africa\'s Original Wedding guide", serving couples since 1999. Part of a wider travel platform.',src:[7],x:92,y:10,lx:565,ly:420,a:'end'},
+  {n:"Where's my Wedding",w:'Venue directory searchable by province, area and type, with capacity and package pricing.',d:'Covers wine farm, Garden Route, Pretoria, Cape Town and Durban venues.',src:[8],x:78,y:4,lx:487,ly:446,a:'end'}]},
+ {g:'Digital wedding magazines',s:'Editorial plus listings',c:'mag',p:[
+  {n:'Wedding Collection',w:'Quarterly digital magazine with an online directory. Listings run for a full year.',d:'Launched in print in 2000 and went fully digital in 2016. States more than 200,000 readers a year.',src:[9],x:86,y:68,lx:532,ly:165,a:'end'},
+  {n:'Real Brides Magazine',w:'Digital magazine, planning tools and vendor directory covering all nine provinces.',d:'Launched in 2026. Aims to be "South Africa\'s premier digital wedding magazine".',src:[10],x:94,y:76,lx:576,ly:130,a:'end'}]},
+ {g:'Inspiration blogs',s:'Editorial voice and inspiration',c:'blog',p:[
+  {n:'Confetti Daydreams',w:'Wedding blog with inspiration, planning advice, DIY and styled shoots.',d:'Founded 2012. Says it has been ranked among Bride Tide\'s Top 100 wedding blogs worldwide since 2015.',src:[11],x:90,y:90,lx:554,ly:68,a:'end'}]},
+ {g:'Regional specialists',s:'One region, several formats',c:'reg',p:[
+  {n:'Marriage Meander',w:'KZN wedding directory, annual print guide and the "Love on the Lawn" expo.',d:'Says it has helped couples find KZN venues and suppliers "for over 17 years". Vendors are curated by the founder.',src:[12],x:12,y:50,lx:137,ly:244,a:'start'},
+  {n:'Top Wedding Suppliers',w:'Curated high-end venue and supplier directory with a Western Cape emphasis.',d:'Suppliers apply to join. Also covers Gauteng, KZN, Eastern Cape, Mpumalanga and Limpopo.',src:[13],x:32,y:30,lx:249,ly:332,a:'start'}]},
+ {g:'Regional expos',s:'Face-to-face showcases',c:'expo',p:[
+  {n:'Western Cape bridal expos',w:'Winter Wedding Expo (Kirstenbosch), Winelands Bridal Fair (Stellenbosch), FAB Bridal Expo (Durbanville).',d:'Seasonal events that bring regional suppliers and couples together in person.',src:[14,15],x:8,y:22,lx:115,ly:366,a:'start'}]}];
+const CAT={dir:'Directories and platforms',venue:'Venue discovery',mag:'Digital magazines',blog:'Blogs',reg:'Regional specialists',expo:'Regional expos'};
+const lg=$('#ledger');
+G.forEach(gr=>{const d=document.createElement('div');d.className='lgrp';
+  d.innerHTML=`<h4>${gr.g}<small>${gr.s}</small></h4><div>${gr.p.map(p=>`<div class="player"><button type="button" aria-expanded="false"><span class="pn">${p.n}</span><span class="pw">${p.w}</span><span class="pp">+</span></button><div class="pd"><div>Detail</div><div><p>${p.d}</p><p style="margin-top:6px">${p.src.map(s=>`<a href="#src-${s}">Source ${s}</a>`).join(' · ')}</p></div><div></div></div></div>`).join('')}</div>`;
+  lg.appendChild(d);});
+$$('.player > button').forEach(b=>b.onclick=()=>{const p=b.parentElement;const o=p.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+
+const pm=$('#pmapsvg');
+const X=v=>60+v*5.6, Y=v=>460-v*4.4;
+el('rect',{x:60,y:20,width:560,height:440,fill:'#FBFAF7',stroke:'#E2E4E7'},pm);
+el('line',{x1:X(50),y1:20,x2:X(50),y2:460,stroke:'#E2E4E7','stroke-dasharray':'3 4'},pm);
+el('line',{x1:60,y1:Y(50),x2:620,y2:Y(50),stroke:'#E2E4E7','stroke-dasharray':'3 4'},pm);
+const q=(x,y,t,a)=>{const e=el('text',{x,y,'text-anchor':a,'font-family':'Hanken Grotesk, sans-serif','font-size':'10','letter-spacing':'2',fill:'#9CA2AB','font-weight':'600'},pm);e.textContent=t};
+q(72,38,'REGIONAL · PUBLISHER-LED','start');q(608,38,'NATIONAL · CONTENT-LED','end');q(72,262,'REGIONAL · DIRECTORY-LED','start');q(608,262,'NATIONAL · DIRECTORY-LED','end');
+const ax=(x,y,t,a,r)=>{const e=el('text',{x,y,'text-anchor':a,'font-family':'Hanken Grotesk, sans-serif','font-size':'11','letter-spacing':'1.6',fill:'#464D5B','font-weight':'600',transform:r||''},pm);e.textContent=t};
+ax(60,484,'← REGIONAL','start');ax(620,484,'NATIONAL →','end');
+ax(40,460,'DIRECTORY / MARKETPLACE','start','rotate(-90 40 460)');ax(40,20,'PUBLISHER / CONTENT ↑','end','rotate(-90 40 20)');
+const all=[];G.forEach(gr=>gr.p.forEach(p=>all.push(Object.assign({c:gr.c},p))));
+all.push({n:'The Wedding Collective',c:'twc',x:14,y:88,lx:176,ly:72,a:'start',w:'Proposed: a regional, publisher-led wedding ecosystem. Editorial, discovery, print, digital, social and commercial content, sold through regional editions.',d:'Positioned where we found no strong incumbent. This is a strategic position to test in the pilot, not a claim of superiority.',src:[]});
+all.forEach((p,i)=>{
+  const g=el('g',{class:'pt','data-c':p.c,'data-i':i,tabindex:'0',role:'button','aria-label':p.n},pm);
+  if(p.c==='twc'){
+    el('circle',{cx:X(p.x),cy:Y(p.y),r:30,fill:'#14284F','fill-opacity':'.06',stroke:'#14284F','stroke-dasharray':'3 4'},g);
+    el('circle',{class:'d',cx:X(p.x),cy:Y(p.y),r:8,fill:'#14284F'},g);
+    const t=el('text',{x:p.lx,y:p.ly,'text-anchor':'start',style:'font-family:Newsreader,serif;font-size:19px;fill:#14284F'},g);t.textContent='The Wedding Collective';
+    const t2=el('text',{x:p.lx,y:p.ly+17,style:'font-size:10px;letter-spacing:2px;fill:#14284F;font-weight:600'},g);t2.textContent='PROPOSED POSITION';
+  }else if(p.c==='expo'){
+    el('rect',{class:'d',x:X(p.x)-5,y:Y(p.y)-5,width:10,height:10,fill:'#FBFAF7',stroke:'#464D5B',transform:`rotate(45 ${X(p.x)} ${Y(p.y)})`},g);
+    const t=el('text',{x:p.lx,y:p.ly,'text-anchor':p.a},g);t.textContent=p.n;
+  }else{
+    el('circle',{class:'d',cx:X(p.x),cy:Y(p.y),r:5.5,fill:p.c==='reg'?'#FBFAF7':'#9CA2AB',stroke:'#464D5B','stroke-width':p.c==='reg'?1.3:0},g);
+    const t=el('text',{x:p.lx,y:p.ly,'text-anchor':p.a},g);t.textContent=p.n;
+  }
+  const go=()=>selP(i);g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+function selP(i){const p=all[i];$$('.pt').forEach(g=>g.classList.toggle('on',+g.dataset.i===i));
+  $('#pinfo').innerHTML=`<span class="cat">${p.c==='twc'?'Proposed':CAT[p.c]}</span><h4>${p.n}</h4><p>${p.w}</p><p class="small" style="margin-top:10px">${p.d}</p>${p.src.length?`<p class="small" style="margin-top:10px">${p.src.map(s=>`<a href="#src-${s}">Source ${s}</a>`).join(' · ')}</p>`:''}<p class="small" style="margin-top:22px;border-top:1px solid #E2E4E7;padding-top:12px">Filled circles: national players. Open circles: regional specialists. Diamond: events. Select any point.</p>`;}
+selP(all.length-1);
+const pf=$('#pfilters');
+[['all','All']].concat(Object.entries(CAT)).forEach(([k,v],i)=>{const b=document.createElement('button');b.type='button';b.className='chip'+(i===0?' on':'');b.textContent=v;b.onclick=()=>{$$('#pfilters button').forEach(x=>x.classList.toggle('on',x===b));$$('.pt').forEach(g=>g.classList.toggle('dim',k!=='all'&&g.dataset.c!==k&&g.dataset.c!=='twc'))};pf.appendChild(b)});
+
+/* ---------------- ecosystem flower ---------------- */
+const E=[
+ ['Editorial','Wedding inspiration','Planning content|Regional guides|Supplier stories|Venue features|Wedding trends|Advice and useful information','Creates the audience and the authority. Never for sale.'],
+ ['Discovery','Always-on','Supplier listings|Regional directory|Category discovery|Supplier profiles|Venue discovery|Local recommendations','The always-on commercial layer that earns between issues.'],
+ ['Commercial content','Partner-led','Sponsored features|Partnered content|Branded guides|Supplier showcases','Paid content, always labelled, in a credible environment.'],
+ ['Digital','Across Volt sites','Display|Landing pages|Directory visibility|Digital features','Reach and visibility at scale across Volt\'s digital estate.'],
+ ['Social','Reach and amplification','Organic social|Social amplification|Campaign extensions','Takes wedding content to where couples already spend time.'],
+ ['Print','Tangible and regional','Regional wedding guides|Wedding features|Print supplements|Integration with relevant titles','A premium, keepable format and a strong regional presence.']];
+const fl=$('#flower');const C=280;
+el('circle',{cx:C,cy:C,r:250,fill:'none',stroke:'#E2E4E7'},fl);
+E.forEach((e,i)=>{const ang=i*60;const g=el('g',{class:'petal','data-i':i,tabindex:'0',role:'button','aria-label':e[0]},fl);
+  el('path',{d:'M0 -40 C -62 -80 -58 -190 0 -228 C 58 -190 62 -80 0 -40 Z',transform:`translate(${C} ${C}) rotate(${ang})`},g);
+  
+  const r=150, a=(ang-90)*Math.PI/180;const tx=C+r*Math.cos(a), ty=C+r*Math.sin(a);
+  const words=e[0].toUpperCase().split(' ');
+  words.forEach((w,k)=>{const t=el('text',{x:tx,y:ty+(k-(words.length-1)/2)*15+4,'text-anchor':'middle'},g);t.textContent=w;});
+  const go=()=>selE(i);g.addEventListener('click',go);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}});
+});
+el('circle',{cx:C,cy:C,r:56,fill:'#14284F'},fl);
+[['ONE',-8],['WEDDING',8],['AUDIENCE',24]].forEach(([t,dy])=>{const x=el('text',{x:C,y:C+dy-4,'text-anchor':'middle','font-family':'Hanken Grotesk, sans-serif','font-size':'10.5','letter-spacing':'2.2','font-weight':'600',fill:'#fff'},fl);x.textContent=t});
+function selE(i){const e=E[i];$$('.petal').forEach(p=>p.classList.toggle('on',+p.dataset.i===i));
+  $('#ecop').innerHTML=`<span class="eyebrow"><b>${e[1]}</b></span><h3 style="margin-top:8px">${e[0]}</h3><ul>${e[2].split('|').map(x=>`<li>${x}</li>`).join('')}</ul><p class="role">${e[3]}</p>`;}
+selE(0);
+let eAuto=0;if(!RM){const eT=setInterval(()=>{eAuto=(eAuto+1)%6;selE(eAuto)},3800);$('#flower').addEventListener('pointerdown',()=>clearInterval(eT),{once:true});$('#flower').addEventListener('keydown',()=>clearInterval(eT),{once:true});}
+
+/* ---------------- directory mock ---------------- */
+function selD(s){$$('#dsteps button').forEach(b=>b.parentElement.classList.toggle('on',+b.dataset.s===s));
+  const me=$('#me');
+  me.style.opacity=s>=0?1:0;
+  me.classList.toggle('hl',s>=1);
+  $('#mprof').classList.toggle('show',s>=2);
+  $('#mfeat').classList.toggle('show',s>=3);
+  $('#mtag').hidden=s<4;
+  const res=$('#mres');
+  res.removeChild(me);if(s>=4){res.insertBefore(me,res.firstChild)}else{res.insertBefore(me,res.children[1])}
+  $('#mcount').textContent=s>=1?'24 suppliers · sorted by relevance':'24 suppliers';
+}
+$$('#dsteps button').forEach(b=>b.onclick=()=>selD(+b.dataset.s));
+if($('#me'))selD(2);
+
+/* ---------------- packages ---------------- */
+const T=[
+ ['Entry',3500,'Small and home-based suppliers taking a first step.',[['Directory','Regional listing in one category'],['Profile','Standard supplier profile with an enquiry route'],['Print','Listing in the regional wedding guide']]],
+ ['Growth',9500,'Growing businesses that want to stand out in their category.',[['Directory','Enhanced profile with gallery'],['Visibility','Featured placement in category for the issue'],['Social','One social mention'],['Print','Small-format ad in the regional guide']]],
+ ['Enhanced',16500,'Established suppliers ready to invest in content.',[['Content','Labelled supplier showcase'],['Digital','Display across regional wedding pages'],['Social','Social post and story'],['Print','Quarter page in the guide']]],
+ ['Premium',25000,'Regional brands that want integrated reach.',[['Content','Sponsored feature in print and digital'],['Digital','Display across relevant Volt titles'],['Social','Amplified social campaign'],['Print','Half page in the guide'],['Directory','Priority placement']]],
+ ['Partnership',30000,'Category partners and larger brands.',[['Content','Branded guide or category partnership'],['Digital','Landing page and display'],['Social','Campaign extension across social'],['Print','Full page or supplement presence'],['Directory','Category partner recognition']]]];
+const tw=$('#tiers');
+T.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.className='tier';
+  b.innerHTML=`<span class="nm">${t[0]}</span><span class="pr">${fmt(t[1])}</span><span class="col" style="height:${Math.max(6,t[1]/30000*72)}%;transition-delay:${i*.12}s"></span>`;b.onclick=()=>selT(i);tw.appendChild(b)});
+function selT(i){const t=T[i];$$('.tier').forEach((b,k)=>b.classList.toggle('on',k===i));
+  $('#tierp').innerHTML=`<div><span class="eyebrow">Illustrative package</span><h3 style="margin-top:8px">${t[0]} <span class="navy num">${fmt(t[1])}</span></h3><p class="for">${t[2]}</p></div><ul>${t[3].map(r=>`<li><span>${r[0]}</span>${r[1]}</li>`).join('')}</ul>`;}
+selT(0);
+if(!RM&&!inView(tw)){tw.classList.add('grow');onEnter(tw,()=>tw.classList.remove('grow'),.4)}
+
+/* ladder */
+const lad=$('#ladderEl');
+if(RM||inView(lad))lad.classList.add('stepped');else onEnter(lad,()=>setTimeout(()=>lad.classList.add('stepped'),200),.4);
+
+/* ---------------- under R50k ---------------- */
+(function(){
+  const box=$('.scale50');if(!box)return;box.innerHTML='';box.style.position='relative';
+  const MAX=60000, base=44;
+  const pct=v=>(v/MAX*100)+'%';
+  const mk=(h,css)=>{const d=document.createElement(h);d.style.cssText=css;box.appendChild(d);return d};
+  mk('div',`position:absolute;left:${pct(50000)};right:0;top:0;bottom:${base}px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 1px,transparent 1px 9px);border-left:1px solid #fff`);
+  const zl=mk('div',`position:absolute;left:calc(${pct(50000)} + 12px);top:6px;right:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#AEB9CF;font-weight:600;line-height:1.5`);zl.innerHTML='R50,000<br><span style="color:#7F8BA6;font-weight:500;letter-spacing:.1em">Traditional campaign territory</span>';
+  mk('div',`position:absolute;left:0;right:0;bottom:${base}px;height:1px;background:#5C6C8E`);
+  for(let v=0;v<=60000;v+=10000){const t=mk('div',`position:absolute;left:${pct(v)};bottom:${base-26}px;transform:translateX(${v===0?'0':v===60000?'-100%':'-50%'});font-size:11px;color:#7F8BA6;font-variant-numeric:tabular-nums`);t.textContent=v===0?'R0':'R'+(v/1000)+'k';}
+  const H=[70,112,154,196,238];
+  T.forEach((t,i)=>{
+    const ln=mk('div',`position:absolute;left:${pct(t[1])};bottom:${base}px;width:1px;height:${H[i]}px;background:${i===4?'#fff':'#8E9AB5'};transform-origin:bottom;transition:transform .8s ${i*.15}s cubic-bezier(.2,.7,.2,1)`);
+    const lb=mk('div',`position:absolute;left:${pct(t[1])};bottom:${base+H[i]}px;padding:0 10px 4px 8px;background:#0D1B38;border-left:1px solid ${i===4?'#fff':'#8E9AB5'};line-height:1.15;white-space:nowrap;transition:opacity .6s ${i*.15+.3}s`);
+    lb.innerHTML=`<div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#AEB9CF;font-weight:600">${t[0]}</div><div style="font-family:var(--display);font-size:clamp(16px,2vw,24px);color:#fff">${fmt(t[1])}</div>`;
+    ln.dataset.l=1;lb.dataset.b=1;
+  });
+  if(!RM&&!inView(box)){$$('[data-l]',box).forEach(l=>l.style.transform='scaleY(0)');$$('[data-b]',box).forEach(l=>l.style.opacity='0');
+    onEnter(box,()=>{$$('[data-l]',box).forEach(l=>l.style.transform='');$$('[data-b]',box).forEach(l=>l.style.opacity='')},.4)}
+})();
+
+/* ---------------- commercial journey loop ---------------- */
+(function(){const s=$('#loopsvg');const N=['DISCOVER','LIST','ENGAGE','LEAD','PARTNER','RETAIN'];const xs=N.map((_,i)=>80+i*168);
+  el('line',{x1:xs[0],y1:90,x2:xs[5],y2:90,stroke:'#C3C8CF'},s);
+  const ret=`M${xs[5]} 104 C ${xs[5]} 230, ${xs[2]} 230, ${xs[2]} 104`;
+  el('path',{d:ret,fill:'none',stroke:'#14284F','stroke-dasharray':'3 5'},s);
+  el('path',{d:`M${xs[2]-6} 114 L ${xs[2]} 103 L ${xs[2]+6} 114`,fill:'none',stroke:'#14284F'},s);
+  const lt=el('text',{x:(xs[2]+xs[5])/2,y:240,'text-anchor':'middle','font-size':'12','letter-spacing':'2.4',fill:'#14284F','font-weight':'600'},s);lt.textContent='NEXT SEASON · NEXT ISSUE';
+  N.forEach((n,i)=>{el('circle',{cx:xs[i],cy:90,r:i>=4?9:6,fill:i>=4?'#14284F':'#FBFAF7',stroke:'#14284F'},s);
+    const t=el('text',{x:xs[i],y:58,'text-anchor':'middle','font-size':'12.5','letter-spacing':'2.6','font-weight':'600',fill:i>=4?'#14284F':'#464D5B'},s);t.textContent=n;});
+  if(!RM){const dot=el('circle',{r:4,fill:'#14284F'},s);el('animateMotion',{dur:'9s',repeatCount:'indefinite',path:`M${xs[0]} 90 L ${xs[5]} 90 L ${xs[5]} 104 C ${xs[5]} 230, ${xs[2]} 230, ${xs[2]} 104 L ${xs[2]} 90 L ${xs[5]} 90`},dot);}
+})();
+
+/* ---------------- revenue build ---------------- */
+(function(){const rc=$('#revchart');const TOT=1271500;const MAXH=80;
+  $$('.rbar',rc).forEach((b,i)=>{const v=+b.dataset.v;const blk=$('.blk',b);blk.style.height=(v/TOT*MAXH)+'%';blk.style.transitionDelay=(i*.35)+'s'});
+  const segs=$$('.seg',rc);segs.forEach(s=>{s.style.height=(+s.dataset.v/TOT*100)+'%'});
+  // bottom segment first
+  [...segs].reverse().forEach((s,i)=>{s.style.transitionDelay=(1.2+i*.45)+'s'});
+  const big=$('#revbig');
+  const count=()=>{const t0=performance.now()+1200;const step=now=>{const k=Math.min(1,Math.max(0,(now-t0)/1500));const e=1-Math.pow(1-k,3);big.textContent=fmt(TOT*e);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)};
+  const play=()=>{rc.classList.add('pre');void rc.offsetWidth;requestAnimationFrame(()=>{rc.classList.remove('pre');if(!RM)count()})};
+  rc.classList.remove('pre');
+  if(!RM&&!inView(rc)){rc.classList.add('pre');onEnter(rc,play,.4)}
+  $('#replay').onclick=play;
+})();
+
+/* ---------------- flywheel ---------------- */
+const F=[
+ ['Audience','Couples and families come for inspiration and planning content across Volt titles.'],
+ ['Suppliers','Suppliers follow the audience and list in the regional directory.'],
+ ['Content','Supplier stories, venue features and guides make the content richer.'],
+ ['Discovery','More listings and better content make discovery more useful for couples.'],
+ ['Commercial value','Suppliers get enquiries and visibility, then upgrade their packages.'],
+ ['More suppliers','Visible results bring in more suppliers and more categories.'],
+ ['More audience value','A fuller, more useful platform brings couples back and attracts new ones. The wheel turns again.']];
+const fs=$('#flysvg');const FC=300,FR=200;
+el('circle',{cx:FC,cy:FC,r:FR,fill:'none',stroke:'#E2E4E7','stroke-width':'1'},fs);
+const arc=el('circle',{cx:FC,cy:FC,r:FR,fill:'none',stroke:'#14284F','stroke-width':'1.6','stroke-dasharray':`${2*Math.PI*FR/7} ${2*Math.PI*FR}`,transform:`rotate(-90 ${FC} ${FC})`,style:'transition:stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1)'},fs);
+el('circle',{cx:FC,cy:FC,r:FR-34,fill:'none',stroke:'#E2E4E7','stroke-dasharray':'2 6'},fs);
+const cu=el('use',{href:'#sprig',x:FC-45,y:FC-120,width:90,height:158,style:'color:#C3C8CF;opacity:.7'},fs);
+const ct=el('text',{x:FC,y:FC+62,'text-anchor':'middle',style:'font-family:Newsreader,serif;font-size:20px;fill:#1B2130'},fs);ct.textContent='The Wedding Collective';
+const ct2=el('text',{x:FC,y:FC+82,'text-anchor':'middle',style:'font-family:Hanken Grotesk,sans-serif;font-size:10px;letter-spacing:2.4px;font-weight:600;fill:#9CA2AB'},fs);ct2.textContent='FLYWHEEL';
+F.forEach((f,i)=>{const a=(-90+i*360/7)*Math.PI/180;const x=FC+FR*Math.cos(a),y=FC+FR*Math.sin(a);
+  const g=el('g',{class:'fnode','data-i':i,tabindex:'0',role:'button','aria-label':f[0]},fs);
+  el('circle',{cx:x,cy:y,r:9},g);
+  // arrow tick between nodes
+  const a2=(-90+(i+.5)*360/7)*Math.PI/180, ax2=FC+FR*Math.cos(a2), ay2=FC+FR*Math.sin(a2), deg=(-90+(i+.5)*360/7)+90;
+  el('path',{d:'M-4 -4 L 2 0 L -4 4',fill:'none',stroke:'#9CA2AB',transform:`translate(${ax2} ${ay2}) rotate(${deg})`},fs);
+  const lx=FC+(FR+30)*Math.cos(a), ly=FC+(FR+30)*Math.sin(a);
+  const anc=Math.abs(Math.cos(a))<.25?'middle':(Math.cos(a)>0?'start':'end');
+  const words=f[0].toUpperCase().split(' ');const lines=words.length>2?[words.slice(0,2).join(' '),words.slice(2).join(' ')]:[f[0].toUpperCase()];
+  lines.forEach((ln,k)=>{const t=el('text',{x:lx,y:ly+4+(k-(lines.length-1)/2)*15+(Math.sin(a)<-.9?-6:0),'text-anchor':anc},g);t.textContent=ln});
+  const go=()=>{stopF();selF(i)};g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+let fi=0,fT=null;
+function selF(i){fi=(i+7)%7;$$('.fnode').forEach(n=>n.classList.toggle('on',+n.dataset.i===fi));
+  const seg=2*Math.PI*FR/7;arc.setAttribute('stroke-dashoffset',String(-(fi*seg)+0));
+  $('#fpanel').innerHTML=`<span class="k">${fi+1} of 7${fi===6?' · back to Audience':''}</span><h3>${F[fi][0]}</h3><p>${F[fi][1]}</p>`;}
+function stopF(){if(fT){clearInterval(fT);fT=null;$('#fplay').textContent='Play'}}
+function playF(){if(RM)return;stopF();fT=setInterval(()=>selF(fi+1),3200);$('#fplay').textContent='Pause'}
+$('#fprev').onclick=()=>{stopF();selF(fi-1)};$('#fnext').onclick=()=>{stopF();selF(fi+1)};
+$('#fplay').onclick=()=>{fT?stopF():playF()};
+selF(0);if(RM)$('#fplay').textContent='Play';else onEnter(fs,playF,.3);
+
+/* ask: build sequence */
+const bts=$$('#bts span');
+if(!RM)onEnter($('#bts'),()=>bts.forEach((b,i)=>setTimeout(()=>b.classList.add('on'),i*300)),.6);else bts.forEach(b=>b.classList.add('on'));
+})();
+</script>
+<script>
+(function(){
+const RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const inView=e=>{const r=e.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0};
+const onEnter=(n,fn,th=.35)=>{if(!n)return;const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){fn();o.disconnect()}})},{threshold:th});o.observe(n)};
+const d=document.getElementById('cydots');
+if(d){const picks=[2,5,9,12,17,21,26,30,34,38];let k=0;const nodes=[];
+  for(let i=0;i<40;i++){const x=document.createElement('i');if(picks.includes(i)){x.dataset.n=++k;}d.appendChild(x);nodes.push(x)}
+  const light=()=>nodes.forEach(x=>{if(x.dataset.n){x.classList.add('on');x.textContent=x.dataset.n}});
+  if(RM||inView(d))light();else onEnter(d,()=>nodes.filter(x=>x.dataset.n).forEach((x,i)=>setTimeout(()=>{x.classList.add('on');x.textContent=x.dataset.n},i*140)),.4);}
+const p=document.querySelector('.poll');
+if(p&&!RM&&!inView(p)){p.classList.add('pre');onEnter(p,()=>p.classList.remove('pre'),.4)}
+})();
+</script>
+
+</body></html>
