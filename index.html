@@ -816,6 +816,43 @@ details.fold .ledger{border-top:1px solid var(--hair)}
 h1,h2,h3{font-weight:400}
 .cover h1{font-weight:450;letter-spacing:-.02em}
 .finale h2{font-weight:450}
+/* plan B addendum */
+.toB{display:inline-block;margin-top:22px;padding:12px 18px;border:1px solid var(--gold-soft);color:var(--gold-soft);text-decoration:none;font-size:14px}
+.toB b{font-weight:700}
+.abwrap{overflow-x:auto}
+.abt{width:100%;border-collapse:collapse;min-width:640px;font-size:15px}
+.abt th{text-align:left;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--mute);padding:0 16px 10px 0;border-bottom:1px solid var(--ink)}
+.abt th.b{color:var(--accent)}
+.abt td{padding:12px 16px 12px 0;border-bottom:1px solid var(--hair);color:var(--ink-2);vertical-align:top}
+.abt td:first-child{font-family:var(--display);font-size:18px;color:var(--ink);width:22%}
+.abt td.b{color:var(--ink);font-weight:500;background:rgba(122,35,53,.05);padding-left:12px}
+.abt th.b{padding-left:12px}
+.whenb{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(24px,3vw,36px)}
+.whenb > div{padding:20px 22px;background:#fff;border:1px solid var(--hair)}
+.whenb > div:first-child{background:#6B1F2E;border-color:#6B1F2E;color:#fff}
+.whenb > div:first-child p{color:#F0DADF}
+.whenb .k,.shared2 .k,.pbcol .k,.pbmoney .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.whenb > div:first-child .k{color:#E3C68E}
+.whenb p{margin-top:8px;font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){.whenb{grid-template-columns:1fr}}
+.shared2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(26px,3vw,40px);border-top:1px solid var(--ink)}
+.shared2 > div{padding:18px 20px 0 0}
+.shared2 > div + div{padding-left:20px;border-left:1px solid var(--hair)}
+.shared2 ul,.pbcol ul{list-style:none;padding:0;margin:10px 0 0}
+.shared2 li{padding:7px 0;border-bottom:1px solid var(--hair);font-size:14.5px;color:var(--ink-2)}
+@media (max-width:860px){.shared2{grid-template-columns:1fr}.shared2 > div + div{padding-left:0;border-left:0}}
+.pbgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pbcol{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:20px}
+.pbcol li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14.5px;color:#D8DDE7}
+.pbcol:nth-child(3){background:#E3C68E;border-color:#E3C68E}
+.pbcol:nth-child(3) .k{color:#561827}.pbcol:nth-child(3) li{color:#1B2130;border-color:rgba(27,33,48,.15)}
+@media (max-width:860px){.pbgrid{grid-template-columns:1fr}}
+.pbmoney{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:clamp(26px,3vw,40px);padding-top:24px;border-top:1px solid rgba(255,255,255,.25)}
+.pbmoney b.num{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,52px);color:#E3C68E;margin:6px 0}
+.pbmoney p{font-size:14.5px;color:#D8DDE7}
+.pbmoney p b{color:#fff}
+.pbmoney .ask2{font-family:var(--display);font-size:clamp(20px,2vw,26px);line-height:1.3;color:#fff;margin-top:8px}
+@media (max-width:760px){.pbmoney{grid-template-columns:1fr}}
 /* ask: dark */
 .ask .notask{color:#AEB7C9}
 </style>
@@ -1546,7 +1583,7 @@ h1,h2,h3{font-weight:400}
       <h2>Each turn makes<br><em>the next one easier.</em></h2>
     </div>
     <div class="fly">
-      <svg id="flysvg" viewBox="0 0 600 600" role="group" aria-label="The Wedding Collective flywheel"></svg>
+      <svg id="flysvg" viewBox="-110 -10 820 620" role="group" aria-label="The Wedding Collective flywheel"></svg>
       <div>
         <div class="fpanel" id="fpanel" aria-live="polite"></div>
         <div class="fctl"><button type="button" id="fprev">Previous</button><button type="button" id="fplay">Pause</button><button type="button" id="fnext">Next</button></div>
@@ -1612,6 +1649,7 @@ h1,h2,h3{font-weight:400}
         <p class="yesask">Approve the Western Cape pilot.</p>
         <div class="bts" id="bts"><span>Build</span><span>Test</span><span>Measure</span><span>Refine</span><span>Scale</span></div>
         <p class="proveline">The pilot proves <b>audience demand</b>, <b>supplier demand</b>, <b>commercial viability</b>, <b>package structure</b> and the <b>operating model</b> before any regional expansion is considered.</p>
+        <a class="toB" href="#ch-planb">Management option: <b>Plan B</b>, three regions in year one. See the addendum →</a>
       </div>
       <div class="approve">
         <div><span class="ck"></span><div><h5>A pilot mandate</h5><p>The Wedding Collective, Western Cape edition, run across three issues or package opportunities.</p></div></div>
@@ -1635,6 +1673,105 @@ h1,h2,h3{font-weight:400}
       <div>One scalable commercial ecosystem.</div>
     </div>
     <div class="closer"><span>Western Cape is the pilot.</span><span>The opportunity is regional.</span></div>
+  </div>
+</section>
+
+<!-- ================= ADDENDUM: PLAN B ================= -->
+<div class="chap c-gold" id="ch-planb"><span class="cn">B</span><span class="cq">Addendum · Plan B</span><span class="cs">If management wants KZN and Gauteng in the same year</span></div>
+
+<section class="sec bg-champagne" id="planb" data-ch="10">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Plan B</b> · a management option</span>
+      <h2>Three regions in year one. <em>Staggered, not simultaneous.</em></h2>
+      <p class="lede">If management wants to move faster, the Western Cape, KwaZulu-Natal and Gauteng can all launch in the same year. We recommend doing this in three waves, each about two months apart. The Western Cape still goes first as the lead edition, and each later wave launches only after a go/no-go gate.</p>
+    </div>
+    <div class="abwrap"><table class="abt">
+      <thead><tr><th></th><th>Plan A · recommended</th><th class="b">Plan B · faster</th></tr></thead>
+      <tbody>
+        <tr><td>Year one</td><td>Western Cape pilot only</td><td class="b">Western Cape, KwaZulu-Natal and Gauteng</td></tr>
+        <tr><td>Anchor titles</td><td>Cape Times</td><td class="b">Cape Times · Daily News · The Star</td></tr>
+        <tr><td>How regions start</td><td>After the pilot is proven and the playbook written</td><td class="b">In waves: Western Cape first, then KZN, then Gauteng</td></tr>
+        <tr><td>The playbook</td><td>Written from pilot results</td><td class="b">Drafted up front, then refined live after each wave</td></tr>
+        <tr><td>National brands</td><td>Multi-region sales from year two</td><td class="b">Multi-region packages available in year one</td></tr>
+        <tr><td>Build</td><td>A minimum directory for one region</td><td class="b">A directory built for several regions from day one</td></tr>
+        <tr><td>Risk</td><td>Lower: learn once, then replicate</td><td class="b">Higher: three supplier bases to build at once</td></tr>
+      </tbody></table></div>
+    <div class="whenb">
+      <div><span class="k">Choose Plan B if</span><p>Management wants a national footprint within twelve months, national brands are ready to buy several regions, and Sales and Editorial can staff three regions from the start.</p></div>
+      <div><span class="k">Stay with Plan A if</span><p>Resourcing is tight, the directory build is not ready for several regions, or management wants proof before committing to three markets.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-ivory" id="planb-run" data-ch="10">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Plan B</b> · how it would run</span>
+      <h2>Three waves, <em>two gates.</em></h2>
+      <p class="lede">Each region runs the same model: an anchor title, a Couple of the Year competition, then three issues. The waves are spaced so the Western Cape's first results inform KZN, and KZN's inform Gauteng. This rhythm is illustrative, for a January start.</p>
+    </div>
+    <div class="tlscroll"><div class="tl" style="grid-template-rows:34px repeat(5,60px)">
+      <div class="peak" style="grid-column:10/14;grid-row:1/7"><span>Peak wedding season</span></div>
+      <div class="tlc h" style="grid-column:1"></div><div class="tlm" style="grid-column:2">Jan</div><div class="tlm" style="grid-column:3">Feb</div><div class="tlm" style="grid-column:4">Mar</div><div class="tlm" style="grid-column:5">Apr</div><div class="tlm" style="grid-column:6">May</div><div class="tlm" style="grid-column:7">Jun</div><div class="tlm" style="grid-column:8">Jul</div><div class="tlm" style="grid-column:9">Aug</div><div class="tlm" style="grid-column:10">Sep</div><div class="tlm" style="grid-column:11">Oct</div><div class="tlm" style="grid-column:12">Nov</div><div class="tlm" style="grid-column:13">Dec</div>
+
+      <div class="tlc" style="grid-row:2"><b>Western Cape</b><small>wave 1 · Cape Times</small></div>
+      <span class="ev soc" style="grid-row:2;grid-column:2/4">Couple of the Year</span>
+      <span class="ev mag" style="grid-row:2;grid-column:4/5">Issue 1</span>
+      <span class="ev mag" style="grid-row:2;grid-column:7/8">Issue 2</span>
+      <span class="ev mag" style="grid-row:2;grid-column:9/10">Issue 3</span>
+
+      <div class="tlc" style="grid-row:3"><b>KwaZulu-Natal</b><small>wave 2 · Daily News</small></div>
+      <span class="ev soc" style="grid-row:3;grid-column:4/6">Couple of the Year</span>
+      <span class="ev mag" style="grid-row:3;grid-column:6/7">Issue 1</span>
+      <span class="ev mag" style="grid-row:3;grid-column:9/10">Issue 2</span>
+      <span class="ev mag" style="grid-row:3;grid-column:11/12">Issue 3</span>
+
+      <div class="tlc" style="grid-row:4"><b>Gauteng</b><small>wave 3 · The Star</small></div>
+      <span class="ev soc" style="grid-row:4;grid-column:6/8">Couple of the Year</span>
+      <span class="ev mag" style="grid-row:4;grid-column:8/9">Issue 1</span>
+      <span class="ev mag" style="grid-row:4;grid-column:10/11">Issue 2</span>
+      <span class="ev mag" style="grid-row:4;grid-column:12/13">Issue 3</span>
+
+      <div class="tlc" style="grid-row:5"><b>Go/no-go gates</b><small>management decisions</small></div>
+      <span class="ev prt" style="grid-row:5;grid-column:4/5">Gate 1<small>KZN go?</small></span>
+      <span class="ev prt" style="grid-row:5;grid-column:6/7">Gate 2<small>Gauteng go?</small></span>
+
+      <div class="tlc" style="grid-row:6"><b>Shared</b><small>central team</small></div>
+      <span class="ev dig" style="grid-row:6;grid-column:2/14">One brand, one directory platform, one package architecture, one playbook, refined after each wave</span>
+    </div></div>
+    <div class="shared2">
+      <div><span class="k">Shared across regions</span><ul><li>The Wedding Collective brand and design</li><li>One directory platform, with each region as a section</li><li>The five-package architecture</li><li>The competition mechanic and content templates</li><li>A central editor, a product owner and the playbook</li></ul></div>
+      <div><span class="k">Run locally in each region</span><ul><li>The anchor title and its social channels</li><li>Supplier sales through that region's sales pod</li><li>Regional editorial: venues, suppliers, real weddings</li><li>The regional magazine edition</li><li>Community titles, where the region has them</li></ul></div>
+      <div><span class="k">What each gate checks</span><ul><li>Suppliers signed against target in the region before</li><li>Competition entries and 2028 Brides sign-ups</li><li>First-issue sell-through, for both ads and copies</li><li>Sales and editorial capacity for the next wave</li><li>Directory stable, with no quality issues</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-navy" id="planb-risk" data-ch="10">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow"><b>Plan B</b> · what it takes and what it risks</span>
+      <h2>Faster, <em>at a price.</em></h2>
+    </div>
+    <div class="pbgrid">
+      <div class="pbcol">
+        <span class="k">What Plan B gains</span>
+        <ul><li>A three-region footprint in twelve months</li><li>Multi-region packages for national brands in year one</li><li>Build costs shared across three regions</li><li>Earlier presence in Gauteng, the largest market by registered marriages</li></ul>
+      </div>
+      <div class="pbcol">
+        <span class="k">What Plan B risks</span>
+        <ul><li>Replicating before the model is proven</li><li>Building three supplier bases from zero at once</li><li>Stretching sales and editorial capacity</li><li>Weakening the brand if one region underperforms</li><li>Needing a multi-region build on day one</li></ul>
+      </div>
+      <div class="pbcol">
+        <span class="k">How we contain it</span>
+        <ul><li>Waves with go/no-go gates, not one big launch</li><li>The Western Cape as lead edition, with lessons applied live</li><li>A central team so each region doesn't reinvent the model</li><li>Hold criteria: pause a wave if its gate is not met</li><li>A tight starting geography in each region</li></ul>
+      </div>
+    </div>
+    <div class="pbmoney">
+      <div><span class="k">Illustrative only</span><b class="num">3 × R1,271,500</b><p>If each region followed the same three-issue model, the mechanical total would be <b>R3,814,500</b>. This is not a forecast. Regions launching without a proven playbook will likely ramp more slowly, and Gauteng has only part of the year to build its supplier base.</p></div>
+      <div><span class="k">The Plan B ask</span><p class="ask2">Approve a three-region year, with Wave 1 committed and Waves 2 and 3 conditional on their gates. Resourcing for three regions is to be tabled with the plan.</p></div>
+    </div>
   </div>
 </section>
 
